@@ -12,8 +12,11 @@ class _DiscoverState extends State<Discover> {
       padding: const EdgeInsets.fromLTRB(16.0, 40.0, 16.0, 8.0),
       child: Column(children: [
         Center(
-            child: Text("Answer this form to help us find your wines",
-                style: TextStyle(color: Colors.white, fontSize: 16.0))),
+            child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+          child: Text("Answer this form to help us find your wines",
+              style: TextStyle(color: Colors.white, fontSize: 16.0)),
+        )),
         ElevatedButton(
             onPressed: () {},
             child: Padding(
