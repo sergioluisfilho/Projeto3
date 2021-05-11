@@ -5,6 +5,20 @@ class Discover extends StatefulWidget {
   _DiscoverState createState() => _DiscoverState();
 }
 
+List<String> perguntas = [
+  'Favorite wine producer country',
+  'Designation',
+  'Filter by points',
+  'suitable price for you',
+  'province',
+  'region ',
+  'name of the taster you trust',
+  'variety: type of the grape',
+  'winery: place that that made the wine'
+];
+
+List respostas = [];
+
 class _DiscoverState extends State<Discover> {
   @override
   Widget build(BuildContext context) {
@@ -12,8 +26,11 @@ class _DiscoverState extends State<Discover> {
       padding: const EdgeInsets.fromLTRB(16.0, 40.0, 16.0, 8.0),
       child: Column(children: [
         Center(
-            child: Text("Answer this form to help us find your wines",
-                style: TextStyle(color: Colors.white, fontSize: 16.0))),
+            child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+          child: Text("Answer this form to help us find your wines",
+              style: TextStyle(color: Colors.white, fontSize: 16.0)),
+        )),
         ElevatedButton(
             onPressed: () {},
             child: Padding(
