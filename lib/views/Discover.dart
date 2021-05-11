@@ -5,6 +5,20 @@ class Discover extends StatefulWidget {
   _DiscoverState createState() => _DiscoverState();
 }
 
+List<String> perguntas = [
+  'Favorite wine producer country',
+  'Designation',
+  'Filter by points',
+  'suitable price for you',
+  'province',
+  'region ',
+  'name of the taster you trust',
+  'variety: type of the grape',
+  'winery: place that that made the wine'
+];
+
+List respostas = [];
+
 class _DiscoverState extends State<Discover> {
   @override
   Widget build(BuildContext context) {
