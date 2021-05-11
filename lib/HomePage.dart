@@ -9,12 +9,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _indiceAtual = 0;
+  int _indiceAtual = 1;
 
   @override
   Widget build(BuildContext context) {
     List<Widget> telas = [WishList(), Discover(), DigitalCellar()];
     return Scaffold(
+      backgroundColor: Color(0xFF5C115E),
       body: telas[_indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _indiceAtual,
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
             });
           },
           type: BottomNavigationBarType.fixed,
-          fixedColor: Colors.purple,
+          fixedColor: Color(0xFF5C115E),
           items: [
             BottomNavigationBarItem(
                 //backgroundColor: Colors.orange,
@@ -33,11 +34,11 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(
                 //backgroundColor: Colors.red,
                 label: "Discover",
-                icon: Icon(Icons.whatshot)),
+                icon: Icon(Icons.graphic_eq_sharp)),
             BottomNavigationBarItem(
                 //backgroundColor: Colors.blue,
                 label: "Digital Cellar",
-                icon: Icon(Icons.subscriptions)),
+                icon: Icon(Icons.wine_bar)),
           ]),
     );
   }
