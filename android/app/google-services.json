@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "497596367775",
+    "firebase_url": "https://winest-7dd41-default-rtdb.firebaseio.com",
+    "project_id": "winest-7dd41",
+    "storage_bucket": "winest-7dd41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497596367775:android:24ed22995f830d7f9e73aa",
+        "android_client_info": {
+          "package_name": "com.example.winest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497596367775-9tn0e6use13lf8j1nsiuubp2urm8ia2b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.winest",
+            "certificate_hash": "902a0cc32638fef77a4bcd703c0601eee0079a43"
+          }
+        },
+        {
+          "client_id": "497596367775-efk0lrt15ck9p4vnv5p2jv59i9b0vas1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGRA5NTtl3Qc97noAfHWk0QqmEQI162q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497596367775-efk0lrt15ck9p4vnv5p2jv59i9b0vas1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
