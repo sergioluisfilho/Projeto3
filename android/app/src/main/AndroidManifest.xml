@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.winest">
+    package="br.com.falcao.winest">
    <application
         android:label="winest"
         android:icon="@mipmap/ic_launcher">

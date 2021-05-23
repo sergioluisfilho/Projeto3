@@ -1,5 +1,5 @@
 name: winest
-description: A new Flutter project.
+description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -28,11 +28,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  cloud_firestore: ^0.13.0+1
-  image_picker: ^0.6.2+3
-  google_sign_in: ^4.1.1
-  firebase_storage: ^3.1.1
-  firebase_auth: ^0.15.3
+  firebase_core: ^0.4.0+5 # Recursos Básicos
+  cloud_firestore: ^0.12.5 # Banco de Dados
+  firebase_storage: ^3.0.1 # Armazenamento de Arquivos
+  firebase_auth: ^0.11.1+6 # Autenticação de Usuários
 
 dev_dependencies:
   flutter_test:
@@ -43,17 +42,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-  # fonts:
-  #   - family: Raleway
-  #     fonts:
-  #       - asset: fonts/Raleway-Regular.ttf
-  #       - asset: fonts/Raleway-Italic.ttf
-  #         style: italic
-  #   - family: RobotoMono
-  #     fonts:
-  #       - asset: fonts/RobotoMono-Regular.ttf
-  #       - asset: fonts/RobotoMono-Bold.ttf
-  #         weight: 700
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

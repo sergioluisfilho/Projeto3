@@ -1,13 +1,14 @@
-import 'dart:html';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:winest/HomePage.dart';
 
 void main() {
 
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
 
-  Firestore.instance.collection("col").document("doc").setData({"texto": "Lucas"});
+  Firestore.instance.collection("Users").document("pontos").setData({"Junior" : "324", "Rafael" : "233"});
+
+  runApp(MyApp());
 
   //runApp(MaterialApp(
   //  title: 'Winest',
@@ -19,12 +20,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Winest",
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Container(),
-    );
+    return Container();
   }
 }
