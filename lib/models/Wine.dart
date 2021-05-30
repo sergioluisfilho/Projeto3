@@ -11,16 +11,18 @@ class Wine {
   String title;
   String variety;
 
-  Wine(
-      this.id,
-      this.country,
-      this.description,
-      this.designation,
-      this.points,
-      this.price,
-      this.province,
-      this.region,
-      this.tasterName,
-      this.title,
-      this.variety);
+  Wine(id, country, description, designation, points, price, province, region,
+      tasterName, title, variety) {
+    this.id = id;
+    this.country = country;
+    this.description = description;
+    this.designation = designation;
+    this.points = points;
+    this.price = price;
+    this.province = province;
+    this.region = region;
+    this.tasterName = tasterName;
+    this.title = title;
+    this.variety = variety;
+  }
 }
