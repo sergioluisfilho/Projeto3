@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
+
 
 class _LoginState extends State<Login> {
   bool _isLoggedIn = false;
@@ -34,8 +36,17 @@ class _LoginState extends State<Login> {
           ],
         )
             : Center(
-          child: ElevatedButton(
-            child: Text("Login with Google"),
+          child: OutlineButton.icon(
+        label: Text(
+        'Sign In With Google',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+          shape: StadiumBorder(),
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          highlightedBorderColor: Colors.black,
+          borderSide: BorderSide(color: Colors.black),
+          textColor: Colors.black,
+          icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
             onPressed: () {
               _googleSignIn.signIn().then((userData) {
                 setState(() {
