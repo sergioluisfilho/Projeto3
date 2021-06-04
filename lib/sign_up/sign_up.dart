@@ -1,7 +1,7 @@
+import 'package:winest/HomePage.dart';
+
 import 'sign_up_service.dart';
 import 'package:flutter/material.dart';
-
-
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -26,12 +26,10 @@ class _SignUpPageState extends State<SignUpPage> {
           vertical: 50,
           horizontal: 50,
         ),
-
         child: SingleChildScrollView(
-
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children : <Widget> [
+            children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(bottom: 20),
               ),
@@ -141,40 +139,40 @@ class _SignUpPageState extends State<SignUpPage> {
                             color: Colors.black,
                           ),
                         ),
-                        ),
                       ),
+                    ),
                     (this.showPassword == false)
                         ? TextFormField(
-                      validator: (value) {
-                        if (value != _passwordInputController.text) {
-                          return "The passwords must be the same";
-                        }
-                        return null;
-                      },
-                      controller: _confirmInputController,
-                      obscureText: true,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        labelText: "Confirm the password",
-                        labelStyle: TextStyle(
-                          color: Colors.black,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.vpn_key_sharp,
-                          color: Colors.black,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                          ),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    )
+                            validator: (value) {
+                              if (value != _passwordInputController.text) {
+                                return "The passwords must be the same";
+                              }
+                              return null;
+                            },
+                            controller: _confirmInputController,
+                            obscureText: true,
+                            style: TextStyle(color: Colors.black),
+                            decoration: InputDecoration(
+                              labelText: "Confirm the password",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.vpn_key_sharp,
+                                color: Colors.black,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          )
                         : Container(),
                     Row(
                       children: [
@@ -198,10 +196,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-
               RaisedButton(
                 onPressed: () {
-                  _doSignUp();
+                  setState(() {
+                    _doSignUp();
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (contex) => HomePage()));
+                  });
                 },
                 child: Text("Register"),
                 shape: RoundedRectangleBorder(
@@ -224,7 +225,5 @@ class _SignUpPageState extends State<SignUpPage> {
     } else {
       print("Invalid");
     }
-    
   }
-
 }
