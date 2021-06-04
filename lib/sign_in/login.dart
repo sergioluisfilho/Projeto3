@@ -7,7 +7,6 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-
 class _LoginState extends State<Login> {
   bool _isLoggedIn = false;
   GoogleSignInAccount _userObj;
@@ -20,45 +19,52 @@ class _LoginState extends State<Login> {
       body: Container(
         child: _isLoggedIn
             ? Column(
-          children: [
-            Image.network(_userObj.photoUrl),
-            Text(_userObj.displayName),
-            Text(_userObj.email),
-            TextButton(
-                onPressed: () {
-                  _googleSignIn.signOut().then((value) {
-                    setState(() {
-                      _isLoggedIn = false;
-                    });
-                  }).catchError((e) {});
-                },
-                child: Text("Logout"))
-          ],
-        )
+                children: [
+                  Image.network(_userObj.photoUrl),
+                  Text(_userObj.displayName),
+                  Text(_userObj.email),
+                  TextButton(
+                      onPressed: () {
+                        _googleSignIn.signOut().then((value) {
+                          setState(() {
+                            _isLoggedIn = false;
+                          });
+                        }).catchError((e) {});
+                      },
+                      child: Text("Logout"))
+                ],
+              )
             : Center(
-          child: OutlineButton.icon(
-        label: Text(
-        'Sign In With Google',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-          shape: StadiumBorder(),
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          highlightedBorderColor: Colors.black,
-          borderSide: BorderSide(color: Colors.black),
-          textColor: Colors.black,
-          icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
-            onPressed: () {
-              _googleSignIn.signIn().then((userData) {
-                setState(() {
-                  _isLoggedIn = true;
-                  _userObj = userData;
-                });
-              }).catchError((e) {
-                print(e);
-              });
-            },
-          ),
-        ),
+                child: OutlineButton.icon(
+                  label: Text(
+                    'Sign In With Google',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  shape: StadiumBorder(),
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  highlightedBorderColor: Colors.black,
+                  borderSide: BorderSide(color: Colors.black),
+                  textColor: Colors.black,
+                  icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
+                  onPressed: () {
+                    _googleSignIn.signIn().then((userData) {
+                      setState(() {
+                        _isLoggedIn = true;
+                        _userObj = userData;
+                      });
+                    }).catchError((e) {
+                      print(e);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("LOGIN ERROR"),
+                            );
+                          });
+                    });
+                  },
+                ),
+              ),
       ),
     );
   }

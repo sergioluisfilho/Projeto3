@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_implementation/models/User.dart';
-import 'package:firebase_implementation/models/Wine.dart';
+import 'package:winest/models/User.dart';
+import 'package:winest/models/Wine.dart';
 
 class WishList {
   List<Map<String, dynamic>> existingWines = [{}];
