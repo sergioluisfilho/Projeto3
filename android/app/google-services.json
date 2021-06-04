@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "943385559915-elvjb9irfk3p5ijq3phouvf6rjm2thml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.falcao.winest",
+            "certificate_hash": "b65568e3868941a8281528c6a2a18c718f277480"
+          }
+        },
+        {
           "client_id": "943385559915-u3vr3cfgc3d1lmkg37g7upqb9neotskd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
