@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:winest/HomePage.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -51,6 +52,10 @@ class _LoginState extends State<Login> {
                       setState(() {
                         _isLoggedIn = true;
                         _userObj = userData;
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (contex) => HomePage()));
                       });
                     }).catchError((e) {
                       print(e);
