@@ -17,27 +17,34 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      backgroundColor: Color.fromRGBO(92, 17, 94, 2),
+      // appBar: AppBar(title: Text("Login")),
       body: Container(
+        padding: EdgeInsets.only(top: 20),
         child: _isLoggedIn
-            ? Column(
-                children: [
-                  Image.network(_userObj.photoUrl),
-                  Text(_userObj.displayName),
-                  Text(_userObj.email),
-                  TextButton(
-                      onPressed: () {
-                        _googleSignIn.signOut().then((value) {
-                          setState(() {
-                            _isLoggedIn = false;
-                          });
-                        }).catchError((e) {});
-                      },
-                      child: Text("Logout"))
-                ],
+            ? Center(
+                child: Column(
+                  // crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Image.network(_userObj.photoUrl),
+                    Text(_userObj.displayName),
+                    Text(_userObj.email),
+                    TextButton(
+                        onPressed: () {
+                          _googleSignIn.signOut().then((value) {
+                            setState(() {
+                              _isLoggedIn = false;
+                            });
+                          }).catchError((e) {});
+                        },
+                        child: Text("Logout"))
+                  ],
+                ),
               )
             : Column(
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Image.asset('images/logo.png'),
                   Center(
                     child: OutlineButton.icon(
                       label: Text(
@@ -76,7 +83,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   Center(
-                    child: RaisedButton(
+                    child: ElevatedButton(
                         child: Text("Create account"),
                         onPressed: () {
                           Navigator.push(
