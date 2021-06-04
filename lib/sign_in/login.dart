@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:winest/HomePage.dart';
+import 'package:winest/sign_up/sign_up.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -35,40 +36,56 @@ class _LoginState extends State<Login> {
                       child: Text("Logout"))
                 ],
               )
-            : Center(
-                child: OutlineButton.icon(
-                  label: Text(
-                    'Sign In With Google',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  shape: StadiumBorder(),
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  highlightedBorderColor: Colors.black,
-                  borderSide: BorderSide(color: Colors.black),
-                  textColor: Colors.black,
-                  icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
-                  onPressed: () {
-                    _googleSignIn.signIn().then((userData) {
-                      setState(() {
-                        _isLoggedIn = true;
-                        _userObj = userData;
-                        Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (contex) => HomePage()));
-                      });
-                    }).catchError((e) {
-                      print(e);
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text("LOGIN ERROR"),
-                            );
+            : Column(
+                children: [
+                  Center(
+                    child: OutlineButton.icon(
+                      label: Text(
+                        'Sign In With Google',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      shape: StadiumBorder(),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      highlightedBorderColor: Colors.black,
+                      borderSide: BorderSide(color: Colors.black),
+                      textColor: Colors.black,
+                      icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
+                      onPressed: () {
+                        _googleSignIn.signIn().then((userData) {
+                          setState(() {
+                            _isLoggedIn = true;
+                            _userObj = userData;
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (contex) => HomePage()));
                           });
-                    });
-                  },
-                ),
+                        }).catchError((e) {
+                          print(e);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("LOGIN ERROR"),
+                                );
+                              });
+                        });
+                      },
+                    ),
+                  ),
+                  Center(
+                    child: RaisedButton(
+                        child: Text("Create account"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              new MaterialPageRoute(
+                                  builder: (contex) => SignUpPage()));
+                        }),
+                  )
+                ],
               ),
       ),
     );
