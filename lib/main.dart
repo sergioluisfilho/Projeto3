@@ -14,7 +14,7 @@ void main() {
 
   runApp(MaterialApp(
     title: 'Winest',
-    home: SignUpPage(),
+    home: Login(),
     debugShowCheckedModeBanner: false,
   ));
 }
