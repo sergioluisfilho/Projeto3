@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:winest/HomePage.dart';
 import 'package:winest/sign_in/login_services.dart';
 
 class Login extends StatefulWidget {
@@ -176,6 +177,9 @@ class _LoginState extends State<Login> {
                       _isLoggedIn = true;
                       _userObj = userData;
                     });
+                    print('logado');
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (contex) => HomePage()));
                   }).catchError((e) {
                     print(e);
                   });

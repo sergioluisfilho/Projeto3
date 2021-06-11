@@ -1,20 +1,14 @@
 import 'dart:convert';
-import 'package:winest/constrants/routes.dart';
 import 'package:http/http.dart' as http;
+import 'package:winest/constrants/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final auth = FirebaseAuth.instance;
 
 class LoginService {
   login(String email, String password) async {
-    http.Response response = await http.post(
-      Routes.login,
-      body: json.encode(
-        {
-          "email": email,
-          "password": password,
-          "returnSecureToken": true,
-        },
-      ),
-    );
-
-    print(response.body);
+    await auth
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((response) => print(response));
   }
 }
