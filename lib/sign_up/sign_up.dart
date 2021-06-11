@@ -1,7 +1,7 @@
 import 'package:winest/HomePage.dart';
-
 import 'sign_up_service.dart';
 import 'package:flutter/material.dart';
+
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -159,9 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           ),
                         ),
-<<<<<<< HEAD
                       ),
-                    ),
                     (this.showPassword == false)
                         ? TextFormField(
                             validator: (value) {
@@ -194,56 +192,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ),
                           )
-=======
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 10,
-                      ),
-                    ),
-                    (this.showPassword == false)
-                        ? Container(
-                          child: TextFormField(
-                      validator: (value) {
-                          if (value != _passwordInputController.text) {
-                            return "The passwords must be the same";
-                          }
-                          return null;
-                      },
-                      controller: _confirmInputController,
-                      obscureText: true,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                          labelText: "Confirm the password",
-                          labelStyle: TextStyle(
-                            color: Colors.black,
-                          ),
-                          prefixIcon: Icon(
-                            Icons.vpn_key_sharp,
-                            color: Colors.black,
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromRGBO(92, 17, 94, 2),
-                            ),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromRGBO(92, 17, 94, 2),
-                            ),
-                          ),
-                      ),
-                    ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white,
-                      ),
-                        )
->>>>>>> dev-lucas
                         : Container(),
                     Row(
                       children: [
