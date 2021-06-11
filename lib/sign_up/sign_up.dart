@@ -157,44 +157,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               color: Color.fromRGBO(92, 17, 94, 2),
                             ),
                           ),
-                          ),
                         ),
-<<<<<<< HEAD
                       ),
-                    ),
-                    (this.showPassword == false)
-                        ? TextFormField(
-                            validator: (value) {
-                              if (value != _passwordInputController.text) {
-                                return "The passwords must be the same";
-                              }
-                              return null;
-                            },
-                            controller: _confirmInputController,
-                            obscureText: true,
-                            style: TextStyle(color: Colors.black),
-                            decoration: InputDecoration(
-                              labelText: "Confirm the password",
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.vpn_key_sharp,
-                                color: Colors.black,
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          )
-=======
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: Colors.white,
@@ -207,43 +171,42 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     (this.showPassword == false)
                         ? Container(
-                          child: TextFormField(
-                      validator: (value) {
-                          if (value != _passwordInputController.text) {
-                            return "The passwords must be the same";
-                          }
-                          return null;
-                      },
-                      controller: _confirmInputController,
-                      obscureText: true,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                          labelText: "Confirm the password",
-                          labelStyle: TextStyle(
-                            color: Colors.black,
-                          ),
-                          prefixIcon: Icon(
-                            Icons.vpn_key_sharp,
-                            color: Colors.black,
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromRGBO(92, 17, 94, 2),
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value != _passwordInputController.text) {
+                                  return "The passwords must be the same";
+                                }
+                                return null;
+                              },
+                              controller: _confirmInputController,
+                              obscureText: true,
+                              style: TextStyle(color: Colors.black),
+                              decoration: InputDecoration(
+                                labelText: "Confirm the password",
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.vpn_key_sharp,
+                                  color: Colors.black,
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color.fromRGBO(92, 17, 94, 2),
+                                  ),
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color.fromRGBO(92, 17, 94, 2),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromRGBO(92, 17, 94, 2),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.white,
                             ),
-                          ),
-                      ),
-                    ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white,
-                      ),
-                        )
->>>>>>> dev-lucas
+                          )
                         : Container(),
                     Row(
                       children: [
