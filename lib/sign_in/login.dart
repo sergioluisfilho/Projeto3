@@ -205,7 +205,7 @@ class _LoginState extends State<Login> {
       LoginService().login(
         _mailInputController.text,
         _passwordInputController.text,
-      );
+      ); //se der tudo certo de um set state com _isLoggedIn = true e set o user_data e de um pushreplacement
     } else {
       print("Invalid");
     }
