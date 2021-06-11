@@ -7,8 +7,6 @@ final auth = FirebaseAuth.instance;
 
 class SignUpService {
   signUp(String email, String password) async {
-    await auth
-        .createUserWithEmailAndPassword(email: email, password: password)
-        .then((response) => {print(response)});
+    await auth.createUserWithEmailAndPassword(email: email, password: password);
   }
 }
