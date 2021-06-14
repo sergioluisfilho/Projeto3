@@ -18,7 +18,7 @@ class _WishListState extends State<WishList> {
   Widget build(BuildContext context) {
     if (winesTest.length == 0) {
       return Scaffold(
-        backgroundColor: Colors.purple[600],
+        backgroundColor: Color(0xFF5C115E),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +54,7 @@ class _WishListState extends State<WishList> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.purple[600],
+      backgroundColor: Color(0xFF5C115E),
       body: Column(
         children: <Widget>[
           Container(
