@@ -6,10 +6,6 @@ import 'package:winest/sign_up/sign_up.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //Firestore.instance.collection("Users").document("pontos").setData({"Junior" : "324", "Rafael" : "233"});
-
-  //runApp(MyApp());
-
   runApp(MaterialApp(
     title: 'Winest',
     home: Login(),
