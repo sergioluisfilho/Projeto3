@@ -131,7 +131,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: TextFormField(
                         validator: (value) {
                           if (value.length < 6) {
-                            return "The password must contains at least 6 caracthers";
+                            return "The password must contain at least 6 caracthers";
                           }
                           return null;
                         },
