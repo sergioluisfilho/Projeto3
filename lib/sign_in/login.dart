@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:winest/HomePage.dart';
 import 'package:winest/sign_in/login_services.dart';
+import 'package:winest/sign_up/sign_up.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -169,6 +170,23 @@ class _LoginState extends State<Login> {
                   bottom: 10,
                 ),
               ),
+              
+              RaisedButton(
+                onPressed: () {
+                  setState(() {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (contex) => SignUpPage()));
+                  });
+                },
+                child: Text("Register"),
+                color: Color.fromRGBO(255, 223, 43, 51),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+              ),
+
+              SizedBox(width: 0, height: 10),
+
               RaisedButton.icon(
                 color: Colors.white,
                 onPressed: () {
