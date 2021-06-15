@@ -11,6 +11,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var uid = "";
   bool _isLoggedIn = false;
   GoogleSignInAccount _userObj;
   GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -195,8 +196,10 @@ class _LoginState extends State<Login> {
                       _userObj = userData;
                     });
                     print('logado');
-                    Navigator.push(context,
-                        new MaterialPageRoute(builder: (contex) => HomePage()));
+                    Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                            builder: (contex) => HomePage(uid)));
                   }).catchError((e) {
                     print(e);
                   });
@@ -217,17 +220,16 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void _doSignIn() {
+  void _doSignIn() async {
     if (_formKey.currentState.validate()) {
-      LoginService().login(
+      uid = await LoginService().login(
         _mailInputController.text,
         _passwordInputController.text,
-      ).then(Navigator.pushReplacement(context,
-                        new MaterialPageRoute(builder: (contex) => HomePage()))
-                  ).catchError((e) {
-                    print(e);
-                  });
-     //se der tudo certo de um set state com _isLoggedIn = true e set o user_data e de um pushreplacement
+      );
+
+      Navigator.pushReplacement(
+          context, new MaterialPageRoute(builder: (contex) => HomePage(uid)));
+      //se der tudo certo de um set state com _isLoggedIn = true e set o user_data e de um pushreplacement
     } else {
       print("Invalid");
     }

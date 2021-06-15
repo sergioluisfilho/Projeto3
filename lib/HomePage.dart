@@ -4,6 +4,10 @@ import 'package:winest/views/Discover.dart';
 import 'package:winest/views/WishList.dart';
 
 class HomePage extends StatefulWidget {
+  String uid = "";
+  HomePage(String uid) {
+    this.uid = uid;
+  }
   @override
   _HomePageState createState() => _HomePageState();
 }
