@@ -93,7 +93,7 @@ class _LoginState extends State<Login> {
                       child: TextFormField(
                         validator: (value) {
                           if (value.length < 6) {
-                            return "The password must contains at least 6 caracthers";
+                            return "The password must contain at least 6 caracthers";
                           }
                           return null;
                         },
