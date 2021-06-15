@@ -10,6 +10,7 @@ class SignUpService {
     var data = await auth.createUserWithEmailAndPassword(
         email: email, password: password);
 
+    print('Firebase User ID: ${data.uid} - SignUp');
     return data.uid;
   
   }

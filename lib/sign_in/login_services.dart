@@ -10,6 +10,7 @@ class LoginService {
     var data =
         await auth.signInWithEmailAndPassword(email: email, password: password);
 
+    print('Firebase User ID: ${data.uid} - Login');
     return data.uid;
   }
 }
