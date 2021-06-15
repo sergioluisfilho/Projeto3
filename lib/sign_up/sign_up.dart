@@ -8,6 +8,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  var uid = "";
   TextEditingController _nameInputController = TextEditingController();
   TextEditingController _mailInputController = TextEditingController();
   TextEditingController _passwordInputController = TextEditingController();
@@ -231,11 +232,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               RaisedButton(
                 onPressed: () {
-                  setState(() {
-                    _doSignUp();
-                    Navigator.push(context,
-                        new MaterialPageRoute(builder: (contex) => HomePage()));
-                  });
+                  _doSignUp();
                 },
                 child: Text("Register"),
                 color: Color.fromRGBO(255, 223, 43, 51),
@@ -250,15 +247,12 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Future<String> _doSignUp() async {
-    if (_formKey.currentState.validate())  {
-
-      var uid = await SignUpService().signUp(
-        _mailInputController.text,
-        _passwordInputController.text
-      );
-      return uid;
-  
+  void _doSignUp() async {
+    if (_formKey.currentState.validate()) {
+      var uid = await SignUpService()
+          .signUp(_mailInputController.text, _passwordInputController.text);
+      Navigator.push(
+          context, new MaterialPageRoute(builder: (contex) => HomePage(uid)));
     } else {
       print("Invalid");
       return null;
