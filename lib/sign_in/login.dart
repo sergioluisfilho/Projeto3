@@ -57,7 +57,7 @@ class _LoginState extends State<Login> {
                           return null;
                         },
                         controller: _mailInputController,
-                        autofocus: true,
+                        autofocus: false,
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                           labelText: "E-mail",
@@ -170,12 +170,13 @@ class _LoginState extends State<Login> {
                   bottom: 10,
                 ),
               ),
-              
               RaisedButton(
                 onPressed: () {
                   setState(() {
-                    Navigator.push(context,
-                        new MaterialPageRoute(builder: (contex) => SignUpPage()));
+                    Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                            builder: (contex) => SignUpPage()));
                   });
                 },
                 child: Text("Register"),
@@ -184,9 +185,7 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(50),
                 ),
               ),
-
               SizedBox(width: 0, height: 10),
-
               RaisedButton.icon(
                 color: Colors.white,
                 onPressed: () {

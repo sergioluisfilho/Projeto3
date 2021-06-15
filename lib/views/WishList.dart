@@ -40,10 +40,8 @@ class _WishListState extends State<WishList> {
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white)),
-                  child: const Text(
-                    'Vinhos',
-                    style: TextStyle(color: Colors.purple, fontSize: 20)
-                  ),
+                  child: const Text('Vinhos',
+                      style: TextStyle(color: Colors.purple, fontSize: 20)),
                   onPressed: () => {},
                 ),
               )
@@ -64,7 +62,7 @@ class _WishListState extends State<WishList> {
                 borderRadius: BorderRadius.all(Radius.circular(30))),
             child: TextFormField(
               cursorColor: Colors.purple,
-              autofocus: true,
+              autofocus: false,
               decoration: InputDecoration(
                 hintText: "Type the wine's name",
                 hintStyle: TextStyle(fontSize: 12, color: Colors.black),
