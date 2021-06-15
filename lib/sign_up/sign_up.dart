@@ -1,5 +1,4 @@
 import 'package:winest/HomePage.dart';
-
 import 'sign_up_service.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +49,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         controller: _nameInputController,
-                        autofocus: true,
+                        autofocus: false,
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                           labelText: "Full Name",
@@ -251,14 +250,18 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void _doSignUp() {
-    if (_formKey.currentState.validate()) {
-      SignUpService().signUp(
+  Future<String> _doSignUp() async {
+    if (_formKey.currentState.validate())  {
+
+      var uid = await SignUpService().signUp(
         _mailInputController.text,
-        _passwordInputController.text,
+        _passwordInputController.text
       );
+      return uid;
+  
     } else {
       print("Invalid");
+      return null;
     }
   }
 }
