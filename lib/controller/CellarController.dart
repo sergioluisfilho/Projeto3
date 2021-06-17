@@ -4,6 +4,4 @@ class CellarController extends Cellar{
 
   Cellar cellar = Cellar();
 
-  
-
 }

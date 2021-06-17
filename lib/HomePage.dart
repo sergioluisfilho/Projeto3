@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> telas = [WishList(), Discover(), DigitalCellar()];
+    List<Widget> telas = [WishList(), Discover(), Cellar()];
     return Scaffold(
       backgroundColor: Color(0xFF5C115E),
       body: telas[_indiceAtual],
