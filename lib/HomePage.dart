@@ -14,9 +14,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _indiceAtual = 1;
-
   @override
   Widget build(BuildContext context) {
+    print('uid: ${widget.uid}');
     List<Widget> telas = [WishList(), Discover(), Cellar()];
     return Scaffold(
       backgroundColor: Color(0xFF5C115E),

@@ -194,6 +194,7 @@ class _LoginState extends State<Login> {
                     setState(() {
                       _isLoggedIn = true;
                       _userObj = userData;
+                      uid = userData.id;
                     });
                     print('logado');
                     Navigator.push(
