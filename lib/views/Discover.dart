@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:winest/views/ListWines.dart';
 
 class Discover extends StatefulWidget {
   @override
@@ -32,7 +33,10 @@ class _DiscoverState extends State<Discover> {
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         )),
         ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (contex) => ListWines()));
+            },
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
               child: Text("Find Wines",
