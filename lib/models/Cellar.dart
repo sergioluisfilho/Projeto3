@@ -5,12 +5,10 @@ import 'package:winest/models/Wine.dart';
 class Cellar {
   List<Map<String, dynamic>> existingWines = [{}];
 
-  void addWineToCellar(Wine wine, User user) {
+  void addWineToCellar(Wine wine, String userId) {
     Firestore db = Firestore.instance;
-    //existingWines.add(wine);
-    int userId = user.id;
 
-    getWines(user);
+    getWines(userId);
 
     existingWines.add({
       "id": wine.id,
@@ -33,22 +31,21 @@ class Cellar {
   }
 
   // Remoção baseada no index do ListTile
-  void removeFromCellar(int index, User user) {
+  void removeFromCellar(int index, String userId) {
     Firestore db = Firestore.instance;
 
-    getWines(user);
+    getWines(userId);
 
     existingWines.removeAt(index + 1);
 
     db
         .collection("Cellar")
-        .document('${user.id}')
+        .document('${userId}')
         .setData({'cellarWines': existingWines});
   }
 
-  void getWines(User user) async {
+  void getWines(String userId) async {
     Firestore db = Firestore.instance;
-    int userId = user.id;
 
     DocumentSnapshot snapshot =
         await db.collection('Cellar').document('$userId').get();

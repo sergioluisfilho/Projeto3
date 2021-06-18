@@ -5,12 +5,10 @@ import 'package:winest/models/Wine.dart';
 class WishList {
   List<Map<String, dynamic>> existingWines = [{}];
 
-  void addWineToWishList(Wine wine, User user) {
+  void addWineToWishList(Wine wine, String userId) {
     Firestore db = Firestore.instance;
-    //existingWines.add(wine);
-    int userId = user.id;
 
-    getWines(user);
+    getWines(userId);
 
     existingWines.add({
       "id": wine.id,
@@ -32,22 +30,21 @@ class WishList {
         .setData({'wishListWines': existingWines});
   }
 
-  void removeFromWishList(int index, User user) {
+  void removeFromWishList(int index, String userId) {
     Firestore db = Firestore.instance;
 
-    getWines(user);
+    getWines(userId);
 
     existingWines.removeAt(index + 1);
 
     db
         .collection("WishList")
-        .document('${user.id}')
+        .document('${userId}')
         .setData({'wishListWines': existingWines});
   }
 
-  void getWines(User user) async {
+  void getWines(String userId) async {
     Firestore db = Firestore.instance;
-    int userId = user.id;
 
     DocumentSnapshot snapshot =
         await db.collection('WishList').document('$userId').get();
