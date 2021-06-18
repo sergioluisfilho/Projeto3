@@ -18,7 +18,6 @@ class _CellarState extends State<Cellar> {
   final List<String> winesTest = ['Wine 1', 'Wine 2', 'Wine 3', 'Wine 4'];
 
   CellarController _controller = CellarController();
-  User user = User(01, 'Arthur', 'Arthur@gmail.com', 'password');
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +109,7 @@ class _CellarState extends State<Cellar> {
             trailing: Icon(Icons.favorite, color: Colors.white)),
         onDismissed: (direction) {
           setState(() {
-            _controller.removeFromCellar(index, this.user);
+            _controller.removeFromCellar(index, widget.uid);
           });
         });
   }

@@ -16,7 +16,6 @@ class _WishListState extends State<WishList> {
   final List<String> winesTest = ['Wine 1', 'Wine 2', 'Wine 3', 'Wine 4'];
 
   WishListController _controller = WishListController();
-  User user = User(01, 'Arthur', 'Arthur@gmail.com', 'password');
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +107,7 @@ class _WishListState extends State<WishList> {
             trailing: Icon(Icons.favorite, color: Colors.white)),
         onDismissed: (direction) {
           setState(() {
-            _controller.removeFromWishList(index, this.user);
+            _controller.removeFromWishList(index, widget.uid);
           });
         });
   }
