@@ -3,6 +3,10 @@ import 'package:winest/controller/WishlistController.dart';
 import 'package:winest/models/User.dart';
 
 class WishList extends StatefulWidget {
+  String uid = "";
+  WishList(String uid) {
+    this.uid = uid;
+  }
   @override
   _WishListState createState() => _WishListState();
 }
@@ -16,6 +20,7 @@ class _WishListState extends State<WishList> {
 
   @override
   Widget build(BuildContext context) {
+    print('Wish List uid: ${widget.uid}');
     if (winesTest.length == 0) {
       return Scaffold(
         backgroundColor: Color(0xFF5C115E),

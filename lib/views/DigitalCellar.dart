@@ -4,6 +4,11 @@ import 'package:winest/models/User.dart';
 import 'package:winest/models/Cellar.dart';
 
 class Cellar extends StatefulWidget {
+  String uid = "";
+  Cellar(String uid) {
+    this.uid = uid;
+  }
+
   @override
   _CellarState createState() => _CellarState();
 }
@@ -17,6 +22,7 @@ class _CellarState extends State<Cellar> {
 
   @override
   Widget build(BuildContext context) {
+    print('cellar uid: ${widget.uid}');
     if (winesTest.length == 0) {
       return Scaffold(
         backgroundColor: Color(0xFF5C115E),
@@ -40,7 +46,7 @@ class _CellarState extends State<Cellar> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white)),
+                          MaterialStateProperty.all<Color>(Colors.white)),
                   child: const Text('Vinhos',
                       style: TextStyle(color: Colors.purple, fontSize: 20)),
                   onPressed: () => {},
@@ -124,19 +130,17 @@ class DismissibleWidget<tile> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Dismissible(
-    direction: DismissDirection.startToEnd,
-    key: ObjectKey(item),
-    background: buildSwipeActionLeft(),
-    child: child,
-    onDismissed: onDismissed,
-  );
+        direction: DismissDirection.startToEnd,
+        key: ObjectKey(item),
+        background: buildSwipeActionLeft(),
+        child: child,
+        onDismissed: onDismissed,
+      );
 
   Widget buildSwipeActionLeft() => Container(
-    alignment: Alignment.centerLeft,
-    padding: EdgeInsets.symmetric(horizontal: 10),
-    color: Colors.white.withOpacity(0.7),
-    child: Icon(Icons.delete),
-  );
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        color: Colors.white.withOpacity(0.7),
+        child: Icon(Icons.delete),
+      );
 }
-
-

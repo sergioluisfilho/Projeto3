@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:winest/views/ListWines.dart';
 
 class Discover extends StatefulWidget {
+  String uid = "";
+  Discover(String uid) {
+    this.uid = uid;
+  }
   @override
   _DiscoverState createState() => _DiscoverState();
 }
@@ -23,6 +27,7 @@ List respostas = [];
 class _DiscoverState extends State<Discover> {
   @override
   Widget build(BuildContext context) {
+    print('discover uid: ${widget.uid}');
     return Padding(
       padding: const EdgeInsets.fromLTRB(16.0, 40.0, 16.0, 8.0),
       child: Column(children: [
@@ -34,8 +39,10 @@ class _DiscoverState extends State<Discover> {
         )),
         ElevatedButton(
             onPressed: () {
-              Navigator.push(context,
-                  new MaterialPageRoute(builder: (contex) => ListWines()));
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (contex) => ListWines(widget.uid)));
             },
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
