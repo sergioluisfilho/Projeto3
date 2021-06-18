@@ -1,4 +1,5 @@
 import 'package:winest/HomePage.dart';
+import 'package:winest/models/User.dart';
 import 'sign_up_service.dart';
 import 'package:flutter/material.dart';
 
@@ -249,8 +250,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void _doSignUp() async {
     if (_formKey.currentState.validate()) {
-      var uid = await SignUpService()
-          .signUp(_mailInputController.text, _passwordInputController.text);
+      var uid = await SignUpService().signUp(_mailInputController.text, _passwordInputController.text);
+      User user = new User(uid, _nameInputController.text, _mailInputController.text, _passwordInputController);
+      user.createUser(); 
       Navigator.push(
           context, new MaterialPageRoute(builder: (contex) => HomePage(uid)));
     } else {
