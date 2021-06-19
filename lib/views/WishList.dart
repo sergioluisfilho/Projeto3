@@ -97,14 +97,30 @@ class _WishListState extends State<WishList> {
     return DismissibleWidget(
         item: winesTest,
         child: ListTile(
-            title: Text(
-              '${wine}',
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-            trailing: Icon(Icons.favorite, color: Colors.red)),
+          title: Text(
+            '${wine}',
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          trailing: Icon(Icons.favorite, color: Colors.red),
+          onTap: () => showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                    elevation: 24.0,
+                    backgroundColor: Colors.white,
+                    // No title, ele vai pegar o nome do vinho selecionado através do index da listile. Usa a lista "winesTest"
+                    title: Text(winesTest[index - 1]),
+                    content: Container(
+                      width: 300.0,
+                      height: 500.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
+                  )),
+        ),
         onDismissed: (direction) {
           setState(() {
             _controller.removeFromWishList(index, widget.uid);
