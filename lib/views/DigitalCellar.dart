@@ -106,7 +106,7 @@ class _CellarState extends State<Cellar> {
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-            trailing: Icon(Icons.favorite, color: Colors.white)),
+            trailing: Icon(Icons.wine_bar_outlined, color: Colors.white)),
         onDismissed: (direction) {
           setState(() {
             _controller.removeFromCellar(index, widget.uid);

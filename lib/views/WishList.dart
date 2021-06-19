@@ -104,7 +104,7 @@ class _WishListState extends State<WishList> {
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-            trailing: Icon(Icons.favorite, color: Colors.white)),
+            trailing: Icon(Icons.favorite, color: Colors.red)),
         onDismissed: (direction) {
           setState(() {
             _controller.removeFromWishList(index, widget.uid);
