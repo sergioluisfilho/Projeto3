@@ -106,17 +106,81 @@ class _WishListState extends State<WishList> {
           onTap: () => showDialog(
               context: context,
               builder: (_) => AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
                     elevation: 24.0,
-                    backgroundColor: Colors.white,
+                    backgroundColor: Color(0xFF5C115E),
                     // No title, ele vai pegar o nome do vinho selecionado através do index da listile. Usa a lista "winesTest"
-                    title: Text(winesTest[index - 1]),
+                    title: Text(winesTest[index - 1],
+                        style: TextStyle(color: Colors.white)),
                     content: Container(
                       width: 300.0,
-                      height: 500.0,
+                      height: 300.0,
                       decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
-                        color: Colors.white,
+                        color: Color(0xFF5C115E),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(children: [
+                            Text('Description',
+                                style: TextStyle(
+                                    color: Color.fromRGBO(255, 223, 43, 51),
+                                    fontWeight: FontWeight.bold))
+                          ]),
+                          SizedBox(width: 0, height: 10),
+                          Text(
+                              '''Aqui vai ficar a descrição do vinho XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX''',
+                              style: TextStyle(color: Colors.white)),
+                          SizedBox(width: 0, height: 20),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text('Price',
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(255, 223, 43, 51),
+                                        fontWeight: FontWeight.bold)),
+                                Text('Points',
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(255, 223, 43, 51),
+                                        fontWeight: FontWeight.bold))
+                              ]),
+                          SizedBox(width: 0, height: 10),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text('U\$ 40.0',
+                                    style: TextStyle(color: Colors.white)),
+                                Text('82.1',
+                                    style: TextStyle(color: Colors.white))
+                              ]),
+                          SizedBox(width: 0, height: 20),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text('Country',
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(255, 223, 43, 51),
+                                        fontWeight: FontWeight.bold)),
+                                Text('Variety',
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(255, 223, 43, 51),
+                                        fontWeight: FontWeight.bold))
+                              ]),
+                          SizedBox(width: 0, height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('Italy',
+                                  style: TextStyle(color: Colors.white)),
+                              Text('Pinot Noir',
+                                  style: TextStyle(color: Colors.white))
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   )),
