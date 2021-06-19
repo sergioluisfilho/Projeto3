@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:winest/controller/CellarController.dart';
 import 'package:winest/models/User.dart';
@@ -99,14 +101,32 @@ class _CellarState extends State<Cellar> {
     return DismissibleWidget(
         item: winesTest,
         child: ListTile(
-            title: Text(
-              '${wine}',
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-            trailing: Icon(Icons.wine_bar_outlined, color: Colors.white)),
+          title: Text(
+            '${wine}',
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          trailing: Icon(Icons.wine_bar_outlined, color: Colors.white),
+
+          // Funcionalidade para listar informações do Vinho (Desenvolvimento)
+          onTap: () => showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                    elevation: 24.0,
+                    backgroundColor: Colors.white,
+                    // No title, ele vai pegar o nome do vinho selecionado através do index da listile. Usa a lista "winesTest"
+                    title: Text(winesTest[index - 1]),
+                    content: Container(
+                      width: 300.0,
+                      height: 500.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
+                  )),
+        ),
         onDismissed: (direction) {
           setState(() {
             _controller.removeFromCellar(index, widget.uid);
