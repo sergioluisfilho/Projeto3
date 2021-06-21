@@ -176,9 +176,11 @@ class _CellarState extends State<Cellar> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text('U\$ 40.0',
+                                Text(
+                                    '${digitalCellar[0]['cellarWines'][index - 1]['price']}',
                                     style: TextStyle(color: Colors.white)),
-                                Text('82.1',
+                                Text(
+                                    '${digitalCellar[0]['cellarWines'][index - 1]['points']}',
                                     style: TextStyle(color: Colors.white))
                               ]),
                           SizedBox(width: 0, height: 20),
