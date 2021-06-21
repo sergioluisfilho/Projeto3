@@ -13,7 +13,6 @@ class WishList extends StatefulWidget {
 
 class _WishListState extends State<WishList> {
   List<Map<String, dynamic>> wishList;
-  final List<String> winesTest = ['Wine 1', 'Wine 2', 'Wine 3', 'Wine 4'];
   List<String> winesNames = [];
 
   WishListController _controller = WishListController();
@@ -213,10 +212,12 @@ class _WishListState extends State<WishList> {
                     ),
                   )),
         ),
-        onDismissed: (direction) {
+        onDismissed: (direction) async {
+          var data =
+              await _controller.removeFromWishList(index - 1, widget.uid);
+          print(data);
           setState(() {
-            // print(wishList[0]['wishListWines']);
-            _controller.removeFromWishList(index - 1, widget.uid);
+            wishList[0]['wishListWines'] = data;
           });
         });
   }
