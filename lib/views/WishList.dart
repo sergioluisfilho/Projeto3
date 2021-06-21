@@ -20,40 +20,40 @@ class _WishListState extends State<WishList> {
   @override
   Widget build(BuildContext context) {
     print('Wish List uid: ${widget.uid}');
-    if (winesTest.length == 0) {
-      return Scaffold(
-        backgroundColor: Color(0xFF5C115E),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Image.asset('images/no_wines_wishlist.png'),
-              SizedBox(width: 0, height: 5),
-              Text('Ooops!',
-                  style: TextStyle(fontSize: 25, color: Colors.white)),
-              SizedBox(width: 0, height: 60),
-              Text('Não há vinhos por aqui',
-                  style: TextStyle(fontSize: 15, color: Colors.white)),
-              SizedBox(width: 0, height: 5),
-              Text('Adicione novos vinhos à sua Wishlist',
-                  style: TextStyle(fontSize: 15, color: Colors.white)),
-              SizedBox(width: 0, height: 40),
-              Container(
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white)),
-                  child: const Text('Vinhos',
-                      style: TextStyle(color: Colors.purple, fontSize: 20)),
-                  onPressed: () => {},
-                ),
-              )
-            ],
-          ),
-        ),
-      );
-    }
+    // if (winesTest.length == 0) {
+    //   return Scaffold(
+    //     backgroundColor: Color(0xFF5C115E),
+    //     body: Center(
+    //       child: Column(
+    //         mainAxisAlignment: MainAxisAlignment.center,
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         children: <Widget>[
+    //           Image.asset('images/no_wines_wishlist.png'),
+    //           SizedBox(width: 0, height: 5),
+    //           Text('Ooops!',
+    //               style: TextStyle(fontSize: 25, color: Colors.white)),
+    //           SizedBox(width: 0, height: 60),
+    //           Text('Não há vinhos por aqui',
+    //               style: TextStyle(fontSize: 15, color: Colors.white)),
+    //           SizedBox(width: 0, height: 5),
+    //           Text('Adicione novos vinhos à sua Wishlist',
+    //               style: TextStyle(fontSize: 15, color: Colors.white)),
+    //           SizedBox(width: 0, height: 40),
+    //           Container(
+    //             child: ElevatedButton(
+    //               style: ButtonStyle(
+    //                   backgroundColor:
+    //                       MaterialStateProperty.all<Color>(Colors.white)),
+    //               child: const Text('Vinhos',
+    //                   style: TextStyle(color: Colors.purple, fontSize: 20)),
+    //               onPressed: () => {},
+    //             ),
+    //           )
+    //         ],
+    //       ),
+    //     ),
+    //   );
+    // }
 
     return Scaffold(
       backgroundColor: Color(0xFF5C115E),

@@ -34,41 +34,6 @@ class _CellarState extends State<Cellar> {
   Widget build(BuildContext context) {
     print('cellar uid: ${widget.uid}');
 
-    // if (winesTest.length == 0) {
-    //   return Scaffold(
-    //     backgroundColor: Color(0xFF5C115E),
-    //     body: Center(
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         crossAxisAlignment: CrossAxisAlignment.center,
-    //         children: <Widget>[
-    //           Image.asset('images/no_wines_wishlist.png'),
-    //           SizedBox(width: 0, height: 5),
-    //           Text('Ooops!',
-    //               style: TextStyle(fontSize: 25, color: Colors.white)),
-    //           SizedBox(width: 0, height: 60),
-    //           Text('Não há vinhos por aqui',
-    //               style: TextStyle(fontSize: 15, color: Colors.white)),
-    //           SizedBox(width: 0, height: 5),
-    //           Text('Adicione novos vinhos à sua Wishlist',
-    //               style: TextStyle(fontSize: 15, color: Colors.white)),
-    //           SizedBox(width: 0, height: 40),
-    //           Container(
-    //             child: ElevatedButton(
-    //               style: ButtonStyle(
-    //                   backgroundColor:
-    //                       MaterialStateProperty.all<Color>(Colors.white)),
-    //               child: const Text('Vinhos',
-    //                   style: TextStyle(color: Colors.purple, fontSize: 20)),
-    //               onPressed: () => {},
-    //             ),
-    //           )
-    //         ],
-    //       ),
-    //     ),
-    //   );
-    // }
-    // _controller.getWines(widget.uid).then((value) => print(value));
     return FutureBuilder<List<Map<String, dynamic>>>(
         future: _controller.getWines(widget.uid),
         builder: (context, snapshot) {
@@ -76,6 +41,45 @@ class _CellarState extends State<Cellar> {
             return Center(child: CircularProgressIndicator());
           digitalCellar = snapshot.data;
           getWinesNames(digitalCellar[0]['cellarWines']);
+          if (digitalCellar[0]['cellarWines'].length == 1) {
+            return Scaffold(
+              backgroundColor: Color(0xFF5C115E),
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    // Image.asset('images/no_wines_wishlist.png'),
+                    SizedBox(width: 0, height: 5),
+                    Text('Ooops!',
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    SizedBox(width: 0, height: 60),
+                    Text('Não há vinhos por aqui',
+                        style: TextStyle(fontSize: 15, color: Colors.white)),
+                    SizedBox(width: 0, height: 5),
+                    Text('Adicione novos vinhos à sua Wishlist',
+                        style: TextStyle(fontSize: 15, color: Colors.white)),
+                    SizedBox(width: 0, height: 40),
+                    Text('Clique em discover',
+                        style: TextStyle(fontSize: 15, color: Colors.white)),
+                    SizedBox(width: 0, height: 40),
+                    // Container(
+                    //   child: ElevatedButton(
+                    //     style: ButtonStyle(
+                    //         backgroundColor:
+                    //             MaterialStateProperty.all<Color>(Colors.white)),
+                    //     child: const Text('Vinhos',
+                    //         style:
+                    //             TextStyle(color: Colors.purple, fontSize: 20)),
+                    //     onPressed: () => {},
+                    //   ),
+                    // )
+                  ],
+                ),
+              ),
+            );
+          }
+
           return Scaffold(
             backgroundColor: Color(0xFF5C115E),
             body: Column(
