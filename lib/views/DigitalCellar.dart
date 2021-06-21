@@ -50,13 +50,13 @@ class _CellarState extends State<Cellar> {
                     Text('Ooops!',
                         style: TextStyle(fontSize: 25, color: Colors.white)),
                     SizedBox(width: 0, height: 60),
-                    Text('Não há vinhos por aqui',
+                    Text('Your Cellar seems to be empty',
                         style: TextStyle(fontSize: 15, color: Colors.white)),
                     SizedBox(width: 0, height: 5),
-                    Text('Adicione novos vinhos à sua Wishlist',
+                    Text('Add some wines to your Cellar ',
                         style: TextStyle(fontSize: 15, color: Colors.white)),
                     SizedBox(width: 0, height: 40),
-                    Text('Clique em discover',
+                    Text('Tap on Discover',
                         style: TextStyle(fontSize: 15, color: Colors.white)),
                     SizedBox(width: 0, height: 40),
                     // Container(
@@ -214,11 +214,10 @@ class _CellarState extends State<Cellar> {
                   )),
         ),
         onDismissed: (direction) async {
-          var data =
-            await _controller.removeFromCellar(index, widget.uid);
+          var data = await _controller.removeFromCellar(index, widget.uid);
           print(data);
           setState(() {
-           digitalCellar[0]['cellarWines'] = data;
+            digitalCellar[0]['cellarWines'] = data;
             // getWinesNames(digitalCellar[0]['cellarWines']);
           });
         });
