@@ -36,6 +36,7 @@ class _WishListState extends State<WishList> {
             return Center(child: CircularProgressIndicator());
           wishList = snapshot.data;
           getWinesNames(wishList[0]['wishListWines']);
+          print(wishList[0]['wishListWines']);
           if (wishList[0]['wishListWines'].length == 0) {
             return Scaffold(
               backgroundColor: Color(0xFF5C115E),
@@ -156,7 +157,7 @@ class _WishListState extends State<WishList> {
                           ]),
                           SizedBox(width: 0, height: 10),
                           Text(
-                              '''Aqui vai ficar a descrição do vinho XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX''',
+                              '${wishList[0]['wishListWines'][index - 1]['description']}',
                               style: TextStyle(color: Colors.white)),
                           SizedBox(width: 0, height: 20),
                           Row(
@@ -175,9 +176,11 @@ class _WishListState extends State<WishList> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text('U\$ 40.0',
+                                Text(
+                                    '${wishList[0]['wishListWines'][index - 1]['price']}',
                                     style: TextStyle(color: Colors.white)),
-                                Text('82.1',
+                                Text(
+                                    '${wishList[0]['wishListWines'][index - 1]['points']}',
                                     style: TextStyle(color: Colors.white))
                               ]),
                           SizedBox(width: 0, height: 20),
@@ -197,9 +200,11 @@ class _WishListState extends State<WishList> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text('Italy',
+                              Text(
+                                  '${wishList[0]['wishListWines'][index - 1]['country']}',
                                   style: TextStyle(color: Colors.white)),
-                              Text('Pinot Noir',
+                              Text(
+                                  '${wishList[0]['wishListWines'][index - 1]['variety']}',
                                   style: TextStyle(color: Colors.white))
                             ],
                           ),
