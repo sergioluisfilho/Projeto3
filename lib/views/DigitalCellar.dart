@@ -157,7 +157,7 @@ class _CellarState extends State<Cellar> {
                           ]),
                           SizedBox(width: 0, height: 10),
                           Text(
-                              '''Aqui vai ficar a descrição do vinho XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX''',
+                              '${digitalCellar[0]['cellarWines'][index - 1]['description']}',
                               style: TextStyle(color: Colors.white)),
                           SizedBox(width: 0, height: 20),
                           Row(
@@ -200,9 +200,11 @@ class _CellarState extends State<Cellar> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text('Italy',
+                              Text(
+                                  '${digitalCellar[0]['cellarWines'][index - 1]['country']}',
                                   style: TextStyle(color: Colors.white)),
-                              Text('Pinot Noir',
+                              Text(
+                                  '${digitalCellar[0]['cellarWines'][index - 1]['variety']}',
                                   style: TextStyle(color: Colors.white))
                             ],
                           ),
