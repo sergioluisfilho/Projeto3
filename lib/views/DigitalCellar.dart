@@ -1,9 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:winest/controller/CellarController.dart';
-import 'package:winest/models/User.dart';
-import 'package:winest/models/Cellar.dart';
 
 class Cellar extends StatefulWidget {
   String uid = "";
@@ -139,7 +135,7 @@ class _CellarState extends State<Cellar> {
                     elevation: 24.0,
                     backgroundColor: Color(0xFF5C115E),
                     // No title, ele vai pegar o nome do vinho selecionado através do index da listile. Usa a lista "winesTest"
-                    title: Text(winesTest[index - 1],
+                    title: Text(winesNames[index - 1],
                         style: TextStyle(color: Colors.white)),
                     content: Container(
                       width: 300.0,

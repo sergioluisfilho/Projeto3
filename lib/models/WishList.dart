@@ -43,7 +43,7 @@ class WishList {
         .setData({'wishListWines': existingWines});
   }
 
-  void getWines(String userId) async {
+  Future<List<Map<String, dynamic>>> getWines(String userId) async {
     Firestore db = Firestore.instance;
 
     DocumentSnapshot snapshot =
@@ -51,5 +51,7 @@ class WishList {
 
     Map<String, dynamic> winesMap = snapshot.data;
     existingWines.add(winesMap);
+    existingWines.removeAt(0);
+    return existingWines;
   }
 }
