@@ -31,17 +31,25 @@ class Cellar {
   }
 
   // Remoção baseada no index do ListTile
-  void removeFromCellar(int index, String userId) {
+  Future<List<dynamic>> removeFromCellar(int index, String userId) async {
     Firestore db = Firestore.instance;
 
-    getWines(userId);
+    await getWines(userId);
+    print(existingWines);
 
-    existingWines.removeAt(index + 1);
+    // print('antes $existingWines');
+    List<dynamic> data = existingWines[0]['cellarWines'].toList();
+    data.removeAt(index - 1);
+    existingWines[0]['cellarWines'] = data;
+    print(existingWines[0]['cellarWines']);
+    // print('depois $existingWines');
 
     db
         .collection("Cellar")
         .document('${userId}')
-        .setData({'cellarWines': existingWines});
+        .setData({'cellarWines': existingWines[0]['cellarWines']});
+
+    return existingWines[0]['cellarWines'];
   }
 
   Future<List<Map<String, dynamic>>> getWines(String userId) async {

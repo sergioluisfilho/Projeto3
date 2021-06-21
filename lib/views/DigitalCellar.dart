@@ -37,7 +37,7 @@ class _CellarState extends State<Cellar> {
             return Center(child: CircularProgressIndicator());
           digitalCellar = snapshot.data;
           getWinesNames(digitalCellar[0]['cellarWines']);
-          if (digitalCellar[0]['cellarWines'].length == 1) {
+          if (digitalCellar[0]['cellarWines'].length == 0) {
             return Scaffold(
               backgroundColor: Color(0xFF5C115E),
               body: Center(
@@ -213,9 +213,12 @@ class _CellarState extends State<Cellar> {
                     ),
                   )),
         ),
-        onDismissed: (direction) {
+        onDismissed: (direction) async {
+          var data =
+            await _controller.removeFromCellar(index, widget.uid);
+          print(data);
           setState(() {
-            _controller.removeFromCellar(index - 1, widget.uid);
+           digitalCellar[0]['cellarWines'] = data;
             // getWinesNames(digitalCellar[0]['cellarWines']);
           });
         });
