@@ -215,7 +215,8 @@ class _CellarState extends State<Cellar> {
         ),
         onDismissed: (direction) {
           setState(() {
-            _controller.removeFromCellar(index, widget.uid);
+            _controller.removeFromCellar(index - 1, widget.uid);
+            // getWinesNames(digitalCellar[0]['cellarWines']);
           });
         });
   }

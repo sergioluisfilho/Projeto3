@@ -36,7 +36,7 @@ class _WishListState extends State<WishList> {
             return Center(child: CircularProgressIndicator());
           wishList = snapshot.data;
           getWinesNames(wishList[0]['wishListWines']);
-          print(wishList[0]['wishListWines']);
+          // print(wishList[0]['wishListWines']);
           if (wishList[0]['wishListWines'].length == 0) {
             return Scaffold(
               backgroundColor: Color(0xFF5C115E),
@@ -215,7 +215,8 @@ class _WishListState extends State<WishList> {
         ),
         onDismissed: (direction) {
           setState(() {
-            _controller.removeFromWishList(index, widget.uid);
+            // print(wishList[0]['wishListWines']);
+            _controller.removeFromWishList(index - 1, widget.uid);
           });
         });
   }

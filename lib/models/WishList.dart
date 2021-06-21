@@ -30,17 +30,25 @@ class WishList {
         .setData({'wishListWines': existingWines});
   }
 
-  void removeFromWishList(int index, String userId) {
+  Future<List<dynamic>> removeFromWishList(int index, String userId) async {
     Firestore db = Firestore.instance;
 
-    getWines(userId);
+    await getWines(userId);
+    print(existingWines);
 
-    existingWines.removeAt(index + 1);
+    // print('antes $existingWines');
+    List<dynamic> data = existingWines[0]['wishListWines'].toList();
+    data.removeAt(index);
+    existingWines[0]['wishListWines'] = data;
+    print(existingWines[0]['wishListWines']);
+    // print('depois $existingWines');
 
     db
         .collection("WishList")
         .document('${userId}')
-        .setData({'wishListWines': existingWines});
+        .setData({'wishListWines': existingWines[0]['wishListWines']});
+
+    return existingWines[0]['wishListWines'];
   }
 
   Future<List<Map<String, dynamic>>> getWines(String userId) async {
