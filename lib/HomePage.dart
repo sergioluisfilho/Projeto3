@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:winest/views/DigitalCellar.dart';
 import 'package:winest/views/Discover.dart';
-import 'package:winest/views/Drawer.dart';
+// import 'package:winest/views/Drawer.dart';
 import 'package:winest/views/WishList.dart';
 
 class HomePage extends StatefulWidget {
