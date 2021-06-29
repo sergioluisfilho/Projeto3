@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:winest/models/User.dart';
 import 'package:winest/models/Wine.dart';
 
 class WishList {
@@ -45,7 +44,7 @@ class WishList {
 
     db
         .collection("WishList")
-        .document('${userId}')
+        .document('$userId')
         .setData({'wishListWines': existingWines[0]['wishListWines']});
 
     return existingWines[0]['wishListWines'];

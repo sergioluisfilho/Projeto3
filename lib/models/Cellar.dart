@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:winest/models/User.dart';
 import 'package:winest/models/Wine.dart';
 
 class Cellar {
@@ -46,7 +45,7 @@ class Cellar {
 
     db
         .collection("Cellar")
-        .document('${userId}')
+        .document('$userId')
         .setData({'cellarWines': existingWines[0]['cellarWines']});
 
     return existingWines[0]['cellarWines'];

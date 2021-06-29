@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:winest/controller/WishlistController.dart';
-import 'package:winest/models/User.dart';
 
 class WishList extends StatefulWidget {
   String uid = "";
