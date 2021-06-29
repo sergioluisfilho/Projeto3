@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -31,6 +33,8 @@ List respostas = [];
 GoogleSignIn _googleSignIn = GoogleSignIn();
 
 bool _isLoggedIn = false;
+double price;
+var newPrice;
 
 class _DiscoverState extends State<Discover> {
   @override
@@ -182,6 +186,19 @@ class _DiscoverState extends State<Discover> {
               ),
             ),
           ),
+          SizedBox(width: 0, height: 100),
+          Slider(
+              value: price,
+              onChanged: (newPrice) {
+                setState(() {
+                  price = newPrice;
+                });
+              },
+              inactiveColor: Colors.purple,
+              activeColor: Colors.white,
+              min: 4,
+              max: 3300,
+              label: "teste"),
         ]),
       ),
     );
