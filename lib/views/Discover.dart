@@ -141,29 +141,47 @@ class _DiscoverState extends State<Discover> {
           Center(
               child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-            child: Text("Answer this form to help us find your wines",
+            child: Text("Help us recommend you a great wine",
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
           )),
+          Container(
+            margin: const EdgeInsets.all(50),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(30))),
+            child: TextFormField(
+                cursorColor: Colors.purple,
+                maxLines: null,
+                autofocus: false,
+                decoration: InputDecoration(
+                    hintText: "Describe a wine you would like to try",
+                    hintStyle: TextStyle(fontSize: 12, color: Colors.black),
+                    border: InputBorder.none,
+                    prefixIcon: Icon(Icons.wine_bar, color: Colors.purple))),
+          ),
           ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (contex) => ListWines(widget.uid)));
-              },
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: Text("Find Wines",
-                    style: TextStyle(color: Colors.black, fontSize: 16)),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (contex) => ListWines(widget.uid)));
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+              child: Text("Find Wines",
+                  style: TextStyle(color: Colors.black, fontSize: 16)),
+            ),
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all<Color>(Color(0xFFFFDF2B)),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                  //side: BorderSide(color: Colors.red)
+                ),
               ),
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFFFDF2B)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    //side: BorderSide(color: Colors.red)
-                  ))))
+            ),
+          ),
         ]),
       ),
     );
