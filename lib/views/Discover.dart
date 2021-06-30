@@ -37,6 +37,7 @@ double price;
 var newPrice;
 
 class _DiscoverState extends State<Discover> {
+  RangeValues values = RangeValues(0,3500);
   @override
   Widget build(BuildContext context) {
     var snapshots = Firestore.instance
@@ -144,12 +145,15 @@ class _DiscoverState extends State<Discover> {
           ),
           Center(
               child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
             child: Text("Help us recommend you a great wine",
-                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold)),
           )),
-          Container(
-            margin: const EdgeInsets.all(50),
+
+          Column(
+            children: [
+              Container(
+            margin: const EdgeInsets.fromLTRB(20,50,20,50),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(30))),
@@ -163,6 +167,47 @@ class _DiscoverState extends State<Discover> {
                     border: InputBorder.none,
                     prefixIcon: Icon(Icons.wine_bar, color: Colors.purple))),
           ),
+              Text("Choose a price range",
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+
+              Padding(padding: EdgeInsets.only(
+              bottom: 20,
+            ),
+            ),
+              
+              RangeSlider(
+            values: values, 
+            min: 0,
+            max: 3500, 
+            divisions: 20,
+            activeColor: Colors.yellow,
+            inactiveColor: Colors.purple,
+            labels: RangeLabels(
+              values.start.round().toString(),
+              values.end.round().toString() 
+            ),
+            onChanged: (values) => setState(() => this.values = values)
+          ),
+            ],
+          ),
+
+          Padding(
+            padding: EdgeInsets.only(
+              bottom: 20,
+            ),
+          ),
+
+          // Text("which country do you prefer?",
+          //       style: TextStyle(color: Colors.white, fontSize: 16.0)),
+
+          //     Padding(padding: EdgeInsets.only(
+          //     bottom: 20,
+          //   ),
+          // ),
+
+          // colocar elementos em um scroll
+
+
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -186,19 +231,9 @@ class _DiscoverState extends State<Discover> {
               ),
             ),
           ),
-          SizedBox(width: 0, height: 100),
-          Slider(
-              value: price,
-              onChanged: (newPrice) {
-                setState(() {
-                  price = newPrice;
-                });
-              },
-              inactiveColor: Colors.purple,
-              activeColor: Colors.white,
-              min: 4,
-              max: 3300,
-              label: "teste"),
+          SizedBox(width: 0, height: 350),
+          
+          
         ]),
       ),
     );
