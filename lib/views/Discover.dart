@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -37,7 +35,7 @@ double price;
 var newPrice;
 
 class _DiscoverState extends State<Discover> {
-  RangeValues values = RangeValues(0,3500);
+  RangeValues values = RangeValues(0, 3500);
   @override
   Widget build(BuildContext context) {
     var snapshots = Firestore.instance
@@ -129,113 +127,108 @@ class _DiscoverState extends State<Discover> {
       ),
       backgroundColor: Color(0xFF5C115E),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 8.0),
-        child: Column(children: [
-          AppBar(
-            title: Text('Welcome to Winest',
-                style: TextStyle(color: Colors.white, fontSize: 20.0)),
-            backgroundColor: Color(0xFF5C115E),
-            centerTitle: true,
-            elevation: 0,
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              bottom: 40,
+          padding: const EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 8.0),
+          child: ListView(children: [
+            AppBar(
+              title: Text('Welcome to Winest',
+                  style: TextStyle(color: Colors.white, fontSize: 20.0)),
+              backgroundColor: Color(0xFF5C115E),
+              centerTitle: true,
+              elevation: 0,
             ),
-          ),
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-            child: Text("Help us recommend you a great wine",
-                style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold)),
-          )),
-
-          Column(
-            children: [
-              Container(
-            margin: const EdgeInsets.fromLTRB(20,50,20,50),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(30))),
-            child: TextFormField(
-                cursorColor: Colors.purple,
-                maxLines: null,
-                autofocus: false,
-                decoration: InputDecoration(
-                    hintText: "Describe a wine you would like to try",
-                    hintStyle: TextStyle(fontSize: 12, color: Colors.black),
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.wine_bar, color: Colors.purple))),
-          ),
-              Text("Choose a price range",
-                style: TextStyle(color: Colors.white, fontSize: 16.0)),
-
-              Padding(padding: EdgeInsets.only(
-              bottom: 20,
-            ),
-            ),
-              
-              RangeSlider(
-            values: values, 
-            min: 0,
-            max: 3500, 
-            divisions: 20,
-            activeColor: Colors.yellow,
-            inactiveColor: Colors.purple,
-            labels: RangeLabels(
-              values.start.round().toString(),
-              values.end.round().toString() 
-            ),
-            onChanged: (values) => setState(() => this.values = values)
-          ),
-            ],
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(
-              bottom: 20,
-            ),
-          ),
-
-          // Text("which country do you prefer?",
-          //       style: TextStyle(color: Colors.white, fontSize: 16.0)),
-
-          //     Padding(padding: EdgeInsets.only(
-          //     bottom: 20,
-          //   ),
-          // ),
-
-          // colocar elementos em um scroll
-
-
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (contex) => ListWines(widget.uid)));
-            },
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Text("Find Wines",
-                  style: TextStyle(color: Colors.black, fontSize: 16)),
-            ),
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Color(0xFFFFDF2B)),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  //side: BorderSide(color: Colors.red)
-                ),
+            Padding(
+              padding: EdgeInsets.only(
+                bottom: 30,
               ),
             ),
-          ),
-          SizedBox(width: 0, height: 350),
-          
-          
-        ]),
-      ),
+            Center(
+                child: Padding(
+              padding: const EdgeInsets.only(bottom: 05),
+              child: Text("Help us recommend you a great wine",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold)),
+            )),
+            SizedBox(width: 0, height: 30),
+            Container(
+              margin: const EdgeInsets.only(top: 25),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(30))),
+              child: TextFormField(
+                  cursorColor: Colors.purple,
+                  maxLines: null,
+                  autofocus: false,
+                  decoration: InputDecoration(
+                      hintText: "Describe a wine you would like to try",
+                      hintStyle: TextStyle(fontSize: 12, color: Colors.black),
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.wine_bar, color: Colors.purple))),
+            ),
+            SizedBox(width: 0, height: 100),
+            Text("Choose a price range",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold)),
+            Padding(
+              padding: EdgeInsets.only(
+                bottom: 20,
+              ),
+            ),
+            RangeSlider(
+                values: values,
+                min: 0,
+                max: 3500,
+                divisions: 20,
+                activeColor: Colors.yellow,
+                inactiveColor: Colors.purple,
+                labels: RangeLabels(values.start.round().toString(),
+                    values.end.round().toString()),
+                onChanged: (values) => setState(() => this.values = values)),
+
+            Padding(
+              padding: EdgeInsets.only(
+                bottom: 20,
+              ),
+            ),
+
+            // Text("which country do you prefer?",
+            //       style: TextStyle(color: Colors.white, fontSize: 16.0)),
+
+            //     Padding(padding: EdgeInsets.only(
+            //     bottom: 20,
+            //   ),
+            // ),
+
+            // colocar elementos em um scroll
+            SizedBox(width: 0, height: 150),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (contex) => ListWines(widget.uid)));
+              },
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: Text("Find Wines",
+                    style: TextStyle(color: Colors.black, fontSize: 16)),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Color(0xFFFFDF2B)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    //side: BorderSide(color: Colors.red)
+                  ),
+                ),
+              ),
+            )
+          ])),
     );
   }
 }
