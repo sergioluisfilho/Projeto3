@@ -35,7 +35,7 @@ double price;
 var newPrice;
 
 class _DiscoverState extends State<Discover> {
-  RangeValues values = RangeValues(0, 3500);
+  RangeValues values = RangeValues(4, 3300);
   @override
   Widget build(BuildContext context) {
     var snapshots = Firestore.instance
@@ -180,8 +180,8 @@ class _DiscoverState extends State<Discover> {
             ),
             RangeSlider(
                 values: values,
-                min: 0,
-                max: 3500,
+                min: 4,
+                max: 3300,
                 divisions: 20,
                 activeColor: Colors.yellow,
                 inactiveColor: Colors.purple,
