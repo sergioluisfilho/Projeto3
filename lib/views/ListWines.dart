@@ -32,9 +32,19 @@ class _ListWinesState extends State<ListWines> {
         if (snapshot.hasData) {
           snapshot.data.forEach((k, v) => print('${k}: ${v}'));
 
+          List<Widget> builder() {
+            List<Widget> l = [];
+            snapshot.data.forEach((k, v) => l.add(ListTile(
+                contentPadding: const EdgeInsets.all(16.0),
+                title: Text(v['title']),
+                trailing: Text(k.toString()),
+                onTap: () {})));
+            return l;
+          }
+
           return Scaffold(
-              backgroundColor: Color(0xFF5C115E),
-              body: Text(snapshot.data['975']['country']));
+              appBar: AppBar(title: Text('Seus vinhos')),
+              body: Column(children: builder()));
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
@@ -43,6 +53,4 @@ class _ListWinesState extends State<ListWines> {
       },
     );
   }
-
-  jsonDecode(String body) {}
 }
