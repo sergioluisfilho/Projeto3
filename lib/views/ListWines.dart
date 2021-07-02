@@ -35,8 +35,7 @@ class _ListWinesState extends State<ListWines> {
         '${widget.countryValue}, ${widget.colorValue}, ${widget.sweetnessValue}, ${widget.fruitValue}, ${widget.maxPrice}');
 
     Future<Map> fetch() async {
-      var url =
-          "http://996586700c76.ngrok.io/predict/Tart%20cherry%20and%20light,%20with%20velvety%20mushroom%20with%20lingering%20tannins/Italy/20";
+      var url = "https://c189719c0d24.ngrok.io/predict/red/Italy/20";
       var response = await http.get(url);
       return json.decode(response.body);
     }
@@ -51,16 +50,123 @@ class _ListWinesState extends State<ListWines> {
 
           List<Widget> builder() {
             List<Widget> l = [];
-            snapshot.data.forEach((k, v) => l.add(ListTile(
-                contentPadding: const EdgeInsets.all(16.0),
-                title: Text(v['title']),
-                trailing: Text(k.toString()),
-                onTap: () {})));
+            snapshot.data.forEach((k, v) => {
+                  l.add(ListTile(
+                      contentPadding: const EdgeInsets.all(16.0),
+                      title: Text(v['title'],
+                          style: TextStyle(color: Colors.white)),
+                      shape: RoundedRectangleBorder(),
+                      trailing: Icon(Icons.wine_bar, color: Colors.white),
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (_) => AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(20.0))),
+                                elevation: 24.0,
+                                backgroundColor: Color(0xFF5C115E),
+                                title: Text(v['title'],
+                                    style: TextStyle(color: Colors.white)),
+                                content: Container(
+                                    width: 350.0,
+                                    height: 500.0,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      color: Color(0xFF5C115E),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0)),
+                                    ),
+                                    child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(children: [
+                                            Text('Description',
+                                                style: TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        255, 223, 43, 51),
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                          ]),
+                                          SizedBox(width: 0, height: 10),
+                                          Text('${v['description']}',
+                                              style: TextStyle(
+                                                  color: Colors.white)),
+                                          SizedBox(width: 0, height: 20),
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Text('Price',
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 223, 43, 51),
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                Text('Points',
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 223, 43, 51),
+                                                        fontWeight:
+                                                            FontWeight.bold))
+                                              ]),
+                                          SizedBox(width: 0, height: 10),
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Text('${v['price']}',
+                                                    style: TextStyle(
+                                                        color: Colors.white)),
+                                                Text('${v['points']}',
+                                                    style: TextStyle(
+                                                        color: Colors.white))
+                                              ]),
+                                          SizedBox(width: 0, height: 20),
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Text('Country',
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 223, 43, 51),
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                Text('Variety',
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 223, 43, 51),
+                                                        fontWeight:
+                                                            FontWeight.bold))
+                                              ]),
+                                          SizedBox(width: 0, height: 10),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text('${v['country']}',
+                                                  style: TextStyle(
+                                                      color: Colors.white)),
+                                              Text('${v['variety']}',
+                                                  style: TextStyle(
+                                                      color: Colors.white))
+                                            ],
+                                          ),
+                                        ]))));
+                      }))
+                });
             return l;
           }
 
           return Scaffold(
-              appBar: AppBar(title: Text('Wines classifed 4 u')),
+              backgroundColor: Color(0xFF5C115E),
+              appBar: AppBar(
+                  title: Text('Wines classifed for you'),
+                  backgroundColor: Color(0xFF5C115E)),
               body: Column(children: builder()));
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
