@@ -21,7 +21,7 @@ String countryValue = 'Country';
 String colorValue = 'Color                                  ';
 String sweetnessValue = 'Sweetness                        ';
 String fruitValue = 'Fruit                                    ';
-String scentValue = 'Scent                                  ';
+String scentValue = 'Scent                                  ';  
 
 bool _isLoggedIn = false;
 double price;
@@ -167,7 +167,8 @@ class _DiscoverState extends State<Discover> {
                 },
               ),
             ),
-            Column(children: <Widget>[
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+                Widget>[
               Padding(
                   padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
                   child: DropdownButton<String>(
@@ -285,7 +286,7 @@ class _DiscoverState extends State<Discover> {
                   Navigator.push(
                       context,
                       new MaterialPageRoute(
-                          builder: (contex) => ListWines(widget.uid)));
+                          builder: (contex) => ListWines(widget.uid, countryValue, colorValue, sweetnessValue, fruitValue, _currentValue)));
                 },
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),

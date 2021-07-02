@@ -2,10 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:winest/models/formQuestions.dart';
+import 'package:winest/views/Discover.dart';
+
 class ListWines extends StatefulWidget {
   String uid = "";
-  ListWines(String uid) {
+  String countryValue = "";
+  String colorValue = "";
+  String sweetnessValue = "";
+  String fruitValue = "";
+  double maxPrice;
+
+  ListWines(String uid, String countryValue, String colorValue,
+      String sweetnessValue, String fruitValue, double maxPrice) {
     this.uid = uid;
+    this.countryValue = countryValue;
+    this.colorValue = colorValue;
+    this.sweetnessValue = sweetnessValue;
+    this.fruitValue = fruitValue;
+    this.maxPrice = maxPrice;
   }
 
   @override
@@ -16,6 +31,8 @@ class _ListWinesState extends State<ListWines> {
   @override
   Widget build(BuildContext context) {
     print('List Wines uid: ${widget.uid}');
+    print(
+        '${widget.countryValue}, ${widget.colorValue}, ${widget.sweetnessValue}, ${widget.fruitValue}, ${widget.maxPrice}');
 
     Future<Map> fetch() async {
       var url =
