@@ -19,7 +19,7 @@ class _ListWinesState extends State<ListWines> {
 
     Future<Map> fetch() async {
       var url =
-          "http://6d841ba2def4.ngrok.io/predict/Tart%20cherry%20and%20light,%20with%20velvety%20mushroom%20with%20lingering%20tannins/Italy/20";
+          "http://996586700c76.ngrok.io/predict/Tart%20cherry%20and%20light,%20with%20velvety%20mushroom%20with%20lingering%20tannins/Italy/20";
       var response = await http.get(url);
       return json.decode(response.body);
     }
