@@ -43,7 +43,7 @@ class _ListWinesState extends State<ListWines> {
           }
 
           return Scaffold(
-              appBar: AppBar(title: Text('Seus vinhos')),
+              appBar: AppBar(title: Text('Wines classifed 4 u')),
               body: Column(children: builder()));
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
