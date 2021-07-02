@@ -21,11 +21,11 @@ class User {
     });
 
     db.collection("Cellar").document("${this.id}").setData({
-      "cellarWines": [{}]
+      "cellarWines": []
     });
 
     db.collection("WishList").document("${this.id}").setData({
-      "wishListWines": [{}]
+      "wishListWines": []
     });
   }
 }
