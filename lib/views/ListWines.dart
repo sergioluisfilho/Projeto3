@@ -38,7 +38,7 @@ class _ListWinesState extends State<ListWines> {
       var phrase =
           'A ${widget.colorValue} and ${widget.sweetnessValue} wine with light notes of ${widget.fruitValue}';
       var url =
-          "https://c189719c0d24.ngrok.io/predict/$phrase/${widget.countryValue}/${widget.maxPrice}";
+          "http://4f8229430a58.ngrok.io/predict/$phrase/${widget.countryValue}/${widget.maxPrice}";
       var response = await http.get(url);
       return json.decode(response.body);
     }
@@ -49,6 +49,49 @@ class _ListWinesState extends State<ListWines> {
       future: fetch(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          if (snapshot.data.length == 0) {
+            return Scaffold(
+              backgroundColor: Color(0xFF5C115E),
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    // Image.asset('images/no_wines_wishlist.png'),
+                    SizedBox(width: 0, height: 5),
+                    Text('Ooops!',
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    SizedBox(width: 0, height: 60),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                          'It seems that there are no wines matching your description',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 15, color: Colors.white)),
+                    ),
+                    SizedBox(width: 0, height: 5),
+                    Text('Try again with others options',
+                        style: TextStyle(fontSize: 15, color: Colors.white)),
+                    SizedBox(width: 0, height: 40),
+                    Text('Tap on Return',
+                        style: TextStyle(fontSize: 15, color: Colors.white)),
+                    SizedBox(width: 0, height: 40),
+                    Container(
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white)),
+                        child: const Text('Try Again',
+                            style:
+                                TextStyle(color: Colors.purple, fontSize: 20)),
+                        onPressed: () => {Navigator.pop(context)},
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }
           snapshot.data.forEach((k, v) => print('${k}: ${v}'));
 
           List<Widget> builder() {
