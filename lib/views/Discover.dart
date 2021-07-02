@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:winest/views/ListWines.dart';
 import 'package:winest/sign_in/login.dart';
+import 'package:winest/models/formQuestions.dart';
 
 class Discover extends StatefulWidget {
   String uid = "";
@@ -14,28 +15,20 @@ class Discover extends StatefulWidget {
   _DiscoverState createState() => _DiscoverState();
 }
 
-List<String> perguntas = [
-  'Favorite wine producer country',
-  'Designation',
-  'Filter by points',
-  'suitable price for you',
-  'province',
-  'region ',
-  'name of the taster you trust',
-  'variety: type of the grape',
-  'winery: place that that made the wine'
-];
-
-List respostas = [];
-
 GoogleSignIn _googleSignIn = GoogleSignIn();
+
+String countryValue = 'Country';
+String colorValue = 'Color                                  ';
+String sweetnessValue = 'Sweetness                        ';
+String fruitValue = 'Fruit                                    ';
+String scentValue = 'Scent                                  ';
 
 bool _isLoggedIn = false;
 double price;
 var newPrice;
 
 class _DiscoverState extends State<Discover> {
-  RangeValues values = RangeValues(4, 3300);
+  double _currentValue = 3300;
   @override
   Widget build(BuildContext context) {
     var snapshots = Firestore.instance
@@ -150,80 +143,163 @@ class _DiscoverState extends State<Discover> {
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold)),
             )),
-            SizedBox(width: 0, height: 30),
-            Container(
-              margin: const EdgeInsets.only(top: 25),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              child: TextFormField(
-                  cursorColor: Colors.purple,
-                  maxLines: null,
-                  autofocus: false,
-                  decoration: InputDecoration(
-                      hintText: "Describe a wine you would like to try",
-                      hintStyle: TextStyle(fontSize: 12, color: Colors.black),
-                      border: InputBorder.none,
-                      prefixIcon: Icon(Icons.wine_bar, color: Colors.purple))),
-            ),
-            SizedBox(width: 0, height: 100),
-            Text("Choose a price range",
+            SizedBox(width: 0, height: 40),
+            Text("The higher amount are you willing to pay",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold)),
             Padding(
-              padding: EdgeInsets.only(
-                bottom: 20,
-              ),
-            ),
-            RangeSlider(
-                values: values,
+              padding: const EdgeInsets.fromLTRB(15, 5, 15, 10),
+              child: Slider(
+                value: _currentValue,
                 min: 4,
                 max: 3300,
-                divisions: 20,
+                divisions: 3300,
                 activeColor: Colors.yellow,
                 inactiveColor: Colors.purple,
-                labels: RangeLabels(values.start.round().toString(),
-                    values.end.round().toString()),
-                onChanged: (values) => setState(() => this.values = values)),
-
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: 20,
+                label: _currentValue.round().toString(),
+                onChanged: (double value) {
+                  setState(() {
+                    _currentValue = value;
+                  });
+                },
               ),
             ),
-
-            // Text("which country do you prefer?",
-            //       style: TextStyle(color: Colors.white, fontSize: 16.0)),
-
-            //     Padding(padding: EdgeInsets.only(
-            //     bottom: 20,
-            //   ),
-            // ),
-
-            // colocar elementos em um scroll
-            SizedBox(width: 0, height: 150),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (contex) => ListWines(widget.uid)));
-              },
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: Text("Find Wines",
-                    style: TextStyle(color: Colors.black, fontSize: 16)),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Color(0xFFFFDF2B)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    //side: BorderSide(color: Colors.red)
+            Column(children: <Widget>[
+              Padding(
+                  padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                  child: DropdownButton<String>(
+                    dropdownColor: Color(0xFF5C115E),
+                    value: countryValue,
+                    icon: const Icon(Icons.arrow_downward, color: Colors.white),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                    underline: Container(
+                      height: 1,
+                      color: Colors.white,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        countryValue = newValue;
+                      });
+                    },
+                    items:
+                        countries.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )),
+              SizedBox(width: 0, height: 5),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                  child: DropdownButton<String>(
+                    dropdownColor: Color(0xFF5C115E),
+                    value: colorValue,
+                    icon: const Icon(Icons.arrow_downward, color: Colors.white),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                    underline: Container(
+                      height: 1,
+                      color: Colors.white,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        colorValue = newValue;
+                      });
+                    },
+                    items: colors.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )),
+              SizedBox(width: 0, height: 5),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                  child: DropdownButton<String>(
+                    dropdownColor: Color(0xFF5C115E),
+                    value: sweetnessValue,
+                    icon: const Icon(Icons.arrow_downward, color: Colors.white),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                    underline: Container(
+                      height: 1,
+                      color: Colors.white,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        sweetnessValue = newValue;
+                      });
+                    },
+                    items:
+                        sweetness.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )),
+              SizedBox(width: 0, height: 5),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                  child: DropdownButton<String>(
+                    dropdownColor: Color(0xFF5C115E),
+                    value: fruitValue,
+                    icon: const Icon(Icons.arrow_downward, color: Colors.white),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                    underline: Container(
+                      height: 1,
+                      color: Colors.white,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        fruitValue = newValue;
+                      });
+                    },
+                    items: fruits.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )),
+            ]),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(100, 10, 100, 10),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (contex) => ListWines(widget.uid)));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                  child: Text("Find Wines",
+                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                ),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFFFFDF2B)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      //side: BorderSide(color: Colors.red)
+                    ),
                   ),
                 ),
               ),
