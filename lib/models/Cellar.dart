@@ -13,12 +13,8 @@ class Cellar {
       "id": wine.id,
       "country": wine.country,
       "description": wine.description,
-      "designation": wine.designation,
       "points": wine.points,
       "price": wine.price,
-      "province": wine.province,
-      "region": wine.region,
-      "tasterName": wine.tasterName,
       "title": wine.title,
       "variety": wine.variety
     });

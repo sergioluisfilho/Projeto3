@@ -128,18 +128,17 @@ class _ListWinesState extends State<ListWines> {
                                         child: TextButton(
                                           onPressed: () {
                                             Wine wine = Wine(
-                                                  k.toString(),
-                                                  v['country'].toString(),
-                                                  v['description'],
-                                                  v['points'].toString(),
-                                                  v['price'].toString(),
-                                                  v['title'],
-                                                  v['variety']);
-                                              _cellarController
-                                                  .addWineToCellar(
-                                                      wine, widget.uid);
+                                                k.toString(),
+                                                v['country'].toString(),
+                                                v['description'],
+                                                v['points'].toString(),
+                                                v['price'].toString(),
+                                                v['title'],
+                                                v['variety']);
+                                            _cellarController.addWineToCellar(
+                                                wine, widget.uid);
                                           },
-                                          child: Text('Add to cellar',
+                                          child: Text('Add to Cellar',
                                               style: TextStyle(
                                                   color: Colors.black)),
                                         ),
@@ -155,7 +154,7 @@ class _ListWinesState extends State<ListWines> {
                                         child: TextButton(
                                             onPressed: () {
                                               Wine wine = Wine(
-                                                  k.toString(),
+                                                  k,
                                                   v['country'].toString(),
                                                   v['description'],
                                                   v['points'].toString(),
