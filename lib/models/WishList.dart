@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:winest/models/Wine.dart';
 
 class WishList {
-  List<Map<String, dynamic>> existingWines = [{}];
+  List<Map<String, dynamic>> existingWines = [];
 
   void addWineToWishList(Wine wine, String userId) {
     Firestore db = Firestore.instance;
@@ -54,7 +54,6 @@ class WishList {
 
     Map<String, dynamic> winesMap = snapshot.data;
     existingWines.add(winesMap);
-    existingWines.removeAt(0);
     return existingWines;
   }
 }

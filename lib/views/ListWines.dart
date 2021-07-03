@@ -39,7 +39,7 @@ class _ListWinesState extends State<ListWines> {
         '${widget.countryValue}, ${widget.colorValue}, ${widget.sweetnessValue}, ${widget.fruitValue}, ${widget.maxPrice}');
 
     Future<Map> fetch() async {
-      var ngrokUrl = "http://772086e6a598.ngrok.io";
+      var ngrokUrl = "http://b3011176b157.ngrok.io";
       var phrase =
           'A ${widget.colorValue} and ${widget.sweetnessValue} wine with light notes of ${widget.fruitValue}';
       var url =

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:winest/models/Wine.dart';
 
 class Cellar {
-  List<Map<String, dynamic>> existingWines = [{}];
+  List<Map<String, dynamic>> existingWines = [];
 
   void addWineToCellar(Wine wine, String userId) {
     Firestore db = Firestore.instance;
@@ -55,7 +55,6 @@ class Cellar {
 
     Map<String, dynamic> winesMap = snapshot.data;
     existingWines.add(winesMap);
-    existingWines.removeAt(0);
     return existingWines;
   }
 }
