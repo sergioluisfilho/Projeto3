@@ -13,7 +13,6 @@ class Cellar extends StatefulWidget {
 
 class _CellarState extends State<Cellar> {
   List<Map<String, dynamic>> digitalCellar;
-  final List<String> winesTest = ['Wine 1', 'Wine 2', 'Wine 3', 'Wine 4'];
   List<String> winesNames = [];
 
   CellarController _controller = CellarController();
@@ -80,22 +79,17 @@ class _CellarState extends State<Cellar> {
             backgroundColor: Color(0xFF5C115E),
             body: Column(
               children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.all(50),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  child: TextFormField(
-                    cursorColor: Colors.purple,
-                    autofocus: false,
-                    decoration: InputDecoration(
-                      hintText: "Type the wine's name",
-                      hintStyle: TextStyle(fontSize: 12, color: Colors.black),
-                      border: InputBorder.none,
-                      prefixIcon: Icon(Icons.wine_bar, color: Colors.purple),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 70),
+                  child: Text(
+                    'Digital Cellar',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
+                SizedBox(height: 50),
                 Expanded(
                   child: ListView.builder(
                       padding: const EdgeInsets.fromLTRB(15, 0, 20, 10),
@@ -122,7 +116,7 @@ class _CellarState extends State<Cellar> {
           title: Text(
             '$wine',
             style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           trailing: Icon(Icons.wine_bar_outlined, color: Colors.white),
 
@@ -137,79 +131,90 @@ class _CellarState extends State<Cellar> {
                     // No title, ele vai pegar o nome do vinho selecionado através do index da listile. Usa a lista "winesTest"
                     title: Text(winesNames[index - 1],
                         style: TextStyle(color: Colors.white)),
-                    content: Container(
-                      width: 300.0,
-                      height: 300.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        color: Color(0xFF5C115E),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Row(children: [
-                            Text('Description',
-                                style: TextStyle(
-                                    color: Color.fromRGBO(255, 223, 43, 51),
-                                    fontWeight: FontWeight.bold))
-                          ]),
-                          SizedBox(width: 0, height: 10),
-                          Text(
-                              '${digitalCellar[0]['cellarWines'][index - 1]['description']}',
-                              style: TextStyle(color: Colors.white)),
-                          SizedBox(width: 0, height: 20),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text('Price',
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(255, 223, 43, 51),
-                                        fontWeight: FontWeight.bold)),
-                                Text('Points',
+                    content: Wrap(
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            color: Color(0xFF5C115E),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0)),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(children: [
+                                Text('Description',
                                     style: TextStyle(
                                         color: Color.fromRGBO(255, 223, 43, 51),
                                         fontWeight: FontWeight.bold))
                               ]),
-                          SizedBox(width: 0, height: 10),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(
-                                    '${digitalCellar[0]['cellarWines'][index - 1]['price']}',
-                                    style: TextStyle(color: Colors.white)),
-                                Text(
-                                    '${digitalCellar[0]['cellarWines'][index - 1]['points']}',
-                                    style: TextStyle(color: Colors.white))
-                              ]),
-                          SizedBox(width: 0, height: 20),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text('Country',
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(255, 223, 43, 51),
-                                        fontWeight: FontWeight.bold)),
-                                Text('Variety',
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(255, 223, 43, 51),
-                                        fontWeight: FontWeight.bold))
-                              ]),
-                          SizedBox(width: 0, height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
+                              SizedBox(width: 0, height: 10),
                               Text(
-                                  '${digitalCellar[0]['cellarWines'][index - 1]['country']}',
+                                  '${digitalCellar[0]['cellarWines'][index - 1]['description']}',
                                   style: TextStyle(color: Colors.white)),
-                              Text(
-                                  '${digitalCellar[0]['cellarWines'][index - 1]['variety']}',
-                                  style: TextStyle(color: Colors.white))
+                              SizedBox(width: 0, height: 20),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text('Price',
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                255, 223, 43, 51),
+                                            fontWeight: FontWeight.bold)),
+                                    Text('Points',
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                255, 223, 43, 51),
+                                            fontWeight: FontWeight.bold))
+                                  ]),
+                              SizedBox(width: 0, height: 10),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                        '${digitalCellar[0]['cellarWines'][index - 1]['price']}',
+                                        style: TextStyle(color: Colors.white)),
+                                    Text(
+                                        '${digitalCellar[0]['cellarWines'][index - 1]['points']}',
+                                        style: TextStyle(color: Colors.white))
+                                  ]),
+                              SizedBox(width: 0, height: 20),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text('Country',
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                255, 223, 43, 51),
+                                            fontWeight: FontWeight.bold)),
+                                    Text('Variety',
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                255, 223, 43, 51),
+                                            fontWeight: FontWeight.bold))
+                                  ]),
+                              SizedBox(width: 0, height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                      '${digitalCellar[0]['cellarWines'][index - 1]['country']}',
+                                      style: TextStyle(color: Colors.white)),
+                                  Text(
+                                      '${digitalCellar[0]['cellarWines'][index - 1]['variety']}',
+                                      style: TextStyle(color: Colors.white))
+                                ],
+                              ),
                             ],
                           ),
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                   )),
         ),

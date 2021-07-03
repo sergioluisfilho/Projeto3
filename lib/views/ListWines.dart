@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:winest/models/formQuestions.dart';
-import 'package:winest/views/Discover.dart';
+import 'package:winest/controller/CellarController.dart';
+import 'package:winest/controller/WishListController.dart';
+import 'package:winest/models/Wine.dart';
 
 class ListWines extends StatefulWidget {
   String uid = "";
@@ -29,16 +30,20 @@ class ListWines extends StatefulWidget {
 
 class _ListWinesState extends State<ListWines> {
   @override
+  CellarController _cellarController = CellarController();
+  WishListController _wishListController = WishListController();
+
   Widget build(BuildContext context) {
     print('List Wines uid: ${widget.uid}');
     print(
         '${widget.countryValue}, ${widget.colorValue}, ${widget.sweetnessValue}, ${widget.fruitValue}, ${widget.maxPrice}');
 
     Future<Map> fetch() async {
+      var ngrokUrl = "http://772086e6a598.ngrok.io";
       var phrase =
           'A ${widget.colorValue} and ${widget.sweetnessValue} wine with light notes of ${widget.fruitValue}';
       var url =
-          "http://4f8229430a58.ngrok.io/predict/$phrase/${widget.countryValue}/${widget.maxPrice}";
+          "$ngrokUrl/predict/$phrase/${widget.countryValue}/${widget.maxPrice}";
       var response = await http.get(url);
       return json.decode(response.body);
     }
@@ -92,7 +97,7 @@ class _ListWinesState extends State<ListWines> {
               ),
             );
           }
-          snapshot.data.forEach((k, v) => print('${k}: ${v}'));
+          snapshot.data.forEach((k, v) => print('$k: $v'));
 
           List<Widget> builder() {
             List<Widget> l = [];
@@ -112,17 +117,60 @@ class _ListWinesState extends State<ListWines> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: Text('Add to cellar',
-                                            style: TextStyle(
-                                                color: Colors.yellow)),
-                                      ),
-                                      TextButton(
-                                          onPressed: () {},
-                                          child: Text('Add to WishList',
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          color:
+                                              Color.fromRGBO(255, 223, 43, 51),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(16.0)),
+                                        ),
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Wine wine = Wine(
+                                                  k.toString(),
+                                                  v['country'].toString(),
+                                                  v['description'],
+                                                  v['points'].toString(),
+                                                  v['price'].toString(),
+                                                  v['title'],
+                                                  v['variety']);
+                                              _cellarController
+                                                  .addWineToCellar(
+                                                      wine, widget.uid);
+                                          },
+                                          child: Text('Add to cellar',
                                               style: TextStyle(
-                                                  color: Colors.yellow)))
+                                                  color: Colors.black)),
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          color:
+                                              Color.fromRGBO(255, 223, 43, 51),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(16.0)),
+                                        ),
+                                        child: TextButton(
+                                            onPressed: () {
+                                              Wine wine = Wine(
+                                                  k.toString(),
+                                                  v['country'].toString(),
+                                                  v['description'],
+                                                  v['points'].toString(),
+                                                  v['price'].toString(),
+                                                  v['title'],
+                                                  v['variety']);
+                                              _wishListController
+                                                  .addWineToWishList(
+                                                      wine, widget.uid);
+                                            },
+                                            child: Text('Add to WishList',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black))),
+                                      )
                                     ])
                               ],
                               shape: RoundedRectangleBorder(
