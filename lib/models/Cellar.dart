@@ -4,25 +4,22 @@ import 'package:winest/models/Wine.dart';
 class Cellar {
   List<Map<String, dynamic>> existingWines = [];
 
-  void addWineToCellar(Wine wine, String userId) {
+  void addWineToCellar(Wine wine, String userId) async {
     Firestore db = Firestore.instance;
 
-    getWines(userId);
-
-    existingWines.add({
-      "id": wine.id,
-      "country": wine.country,
-      "description": wine.description,
-      "points": wine.points,
-      "price": wine.price,
-      "title": wine.title,
-      "variety": wine.variety
+    await db.collection('Cellar').document('$userId').updateData({
+      'cellarWines': FieldValue.arrayUnion([
+        {
+          "id": wine.id,
+          "country": wine.country,
+          "description": wine.description,
+          "points": wine.points,
+          "price": wine.price,
+          "title": wine.title,
+          "variety": wine.variety
+        }
+      ])
     });
-
-    db
-        .collection('Cellar')
-        .document('$userId')
-        .setData({'cellarWines': existingWines});
   }
 
   // Remoção baseada no index do ListTile

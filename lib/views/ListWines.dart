@@ -39,7 +39,7 @@ class _ListWinesState extends State<ListWines> {
         '${widget.countryValue}, ${widget.colorValue}, ${widget.sweetnessValue}, ${widget.fruitValue}, ${widget.maxPrice}');
 
     Future<Map> fetch() async {
-      var ngrokUrl = "http://b3011176b157.ngrok.io";
+      var ngrokUrl = "http://f720bd8a0f1c.ngrok.io";
       var phrase =
           'A ${widget.colorValue} and ${widget.sweetnessValue} wine with light notes of ${widget.fruitValue}';
       var url =
@@ -154,7 +154,7 @@ class _ListWinesState extends State<ListWines> {
                                         child: TextButton(
                                             onPressed: () {
                                               Wine wine = Wine(
-                                                  k,
+                                                  k.toString(),
                                                   v['country'].toString(),
                                                   v['description'],
                                                   v['points'].toString(),
@@ -282,8 +282,7 @@ class _ListWinesState extends State<ListWines> {
           return Scaffold(
               backgroundColor: Color(0xFF5C115E),
               appBar: AppBar(
-                  title: Text('Wines classifed for you'),
-                  backgroundColor: Color(0xFF5C115E)),
+                  title: Text('Discover'), backgroundColor: Color(0xFF5C115E)),
               body: SingleChildScrollView(
                 child: Column(children: builder()),
               ));
