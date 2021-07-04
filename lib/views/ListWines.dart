@@ -39,7 +39,7 @@ class _ListWinesState extends State<ListWines> {
         '${widget.countryValue}, ${widget.colorValue}, ${widget.sweetnessValue}, ${widget.fruitValue}, ${widget.maxPrice}');
 
     Future<Map> fetch() async {
-      var ngrokUrl = "http://ea1a67942151.ngrok.io/";
+      var ngrokUrl = "http://634f3083c1b1.ngrok.io";
       var phrase =
           'A ${widget.colorValue} and ${widget.sweetnessValue} wine with light notes of ${widget.fruitValue}';
       var url =
@@ -138,6 +138,20 @@ class _ListWinesState extends State<ListWines> {
                                                 v['variety']);
                                             _cellarController.addWineToCellar(
                                                 wine, widget.uid);
+
+                                            showDialog<String>(
+                                              context: context,
+                                              builder: (BuildContext context) => AlertDialog(
+                                                title: const Text('Thank you!'),
+                                                content: const Text('Your wine was added to Cellar succesufelly'),
+                                                actions: <Widget>[
+                                                  TextButton(
+                                                    onPressed: () => Navigator.pop(context, 'OK'),
+                                                    child: const Text('OK'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
                                           },
                                           child: Text('Add to Cellar',
                                               style: TextStyle(
@@ -165,6 +179,19 @@ class _ListWinesState extends State<ListWines> {
                                               _wishListController
                                                   .addWineToWishList(
                                                       wine, widget.uid);
+                                              showDialog<String>(
+                                              context: context,
+                                              builder: (BuildContext context) => AlertDialog(
+                                                title: const Text('Thank you!'),
+                                                content: const Text('Your wine was added to Wish List succesufelly'),
+                                                actions: <Widget>[
+                                                  TextButton(
+                                                    onPressed: () => Navigator.pop(context, 'OK'),
+                                                    child: const Text('OK'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
                                             },
                                             child: Text('Add to WishList',
                                                 style: TextStyle(
