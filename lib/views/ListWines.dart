@@ -39,12 +39,13 @@ class _ListWinesState extends State<ListWines> {
         '${widget.countryValue}, ${widget.colorValue}, ${widget.sweetnessValue}, ${widget.fruitValue}, ${widget.maxPrice}');
 
     Future<Map> fetch() async {
-      var ngrokUrl = "http://9ba52da4a7db.ngrok.io";
+      var ngrokUrl = "http://ea1a67942151.ngrok.io/";
       var phrase =
           'A ${widget.colorValue} and ${widget.sweetnessValue} wine with light notes of ${widget.fruitValue}';
       var url =
           "$ngrokUrl/predict/$phrase/${widget.countryValue}/${widget.maxPrice}";
       var response = await http.get(url);
+      print(response.body);
       return json.decode(response.body);
     }
 
@@ -287,7 +288,15 @@ class _ListWinesState extends State<ListWines> {
                 child: Column(children: builder()),
               ));
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Scaffold(
+            backgroundColor: Color(0xFF5C115E),
+            appBar: AppBar(backgroundColor: Color(0xFF5C115E)),
+            body: Container(
+              child: Center(
+                  child: Text('Api fora do ar',
+                      style: TextStyle(color: Colors.white))),
+            ),
+          );
         }
         // By default, show a loading spinner.
         return Center(child: CircularProgressIndicator());
