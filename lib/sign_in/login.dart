@@ -187,33 +187,6 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SizedBox(width: 0, height: 10),
-              RaisedButton.icon(
-                color: Colors.white,
-                onPressed: () {
-                  _googleSignIn.signIn().then((userData) {
-                    setState(() {
-                      _isLoggedIn = true;
-                      _userObj = userData;
-                      uid = userData.id;
-                    });
-                    print('logado');
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (contex) => HomePage(uid)));
-                  }).catchError((e) {
-                    print(e);
-                  });
-                },
-                label: Text(
-                  'Sign In With Google',
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                textColor: Colors.black,
-                icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
-              ),
             ],
           ),
         ),

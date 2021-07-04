@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:winest/sign_in/login.dart';
+import 'package:winest/views/splashScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(MaterialApp(
     title: 'Winest',
-    home: Login(),
+    home: MyHomePage(),
     debugShowCheckedModeBanner: false,
   ));
 }
